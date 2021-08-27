@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Categories from "./components/Categories";
 import Reviews from "./components/Reviews";
 import Users from "./components/Users";
+import SingleReview from "./components/SingleReview";
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
           </Route>
           <Route exact path="/reviews">
             <Reviews />
+          </Route>
+          <Route exact path="/reviews/:review_id">
+            <SingleReview />
           </Route>
           <Route exact path="/categories">
             <Categories />

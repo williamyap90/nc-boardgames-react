@@ -164,13 +164,15 @@ nav ul li a:hover:after {
 }
 
 /* Reviews */
-.reviews__container {
+.reviews__container,
+.single_review__container {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
 }
-.reviews__item {
+.reviews__item,
+.single_review__item {
   list-style: none;
   border-radius: 1em;
   padding: 2em;
@@ -184,11 +186,18 @@ nav ul li a:hover:after {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.reviews__image {
+.reviews__image,
+.single_review__image {
   width: 300px;
 }
 
 .reviews__container li p {
+  padding: 0.25em;
+  margin: 0 2em;
+  text-align: left;
+}
+
+.single_review__container li p {
   padding: 0.25em;
   margin: 0 2em;
   text-align: left;

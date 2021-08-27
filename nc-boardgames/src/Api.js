@@ -18,3 +18,8 @@ export const getUsers = async () => {
   const { data } = await api.get("/users");
   return data.users;
 };
+
+export const getSingleReview = async (review_id) => {
+  const { data } = await api.get(`/reviews/${review_id}`);
+  return data.review[0];
+};

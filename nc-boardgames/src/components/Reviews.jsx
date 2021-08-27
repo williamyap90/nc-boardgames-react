@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getReviews } from "../Api";
+// To do: link to single review on each review card
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
