@@ -37,7 +37,7 @@ const Reviews = () => {
           );
         })}
       </ul>
-      <p> Showing 1-10 of 24</p>
+      <p> Previous - Showing 1-10 of 24 - Next</p>
     </section>
   );
 };
