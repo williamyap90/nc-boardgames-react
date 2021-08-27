@@ -160,6 +160,8 @@ nav ul li a:hover:after {
     min-height: 100vh;
     max-width: 1000px;
     margin: 0 auto;
+    box-shadow: 2.5em 0 1em -1.5em rgba(0, 0, 0, 0.4),
+      -2.5em 0 1em -1.5em rgba(0, 0, 0, 0.4);
   }
 }
 
