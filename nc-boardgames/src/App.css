@@ -278,3 +278,11 @@ nav ul li a:hover:after {
   text-align: center;
   margin: 0;
 }
+
+/* Comments */
+.comments__container {
+  background-color: white;
+  border-radius: 1em;
+  padding: 1em;
+  margin: 1em;
+}
