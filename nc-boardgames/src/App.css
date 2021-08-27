@@ -162,3 +162,30 @@ nav ul li a:hover:after {
     margin: 0 auto;
   }
 }
+
+/* Reviews */
+.reviews__container {
+  border: 1px solid red;
+}
+
+.reviews__item {
+  list-style: none;
+  border-radius: 3em;
+  padding: 1em;
+  margin: 1em;
+  background-color: rgb(219, 219, 219);
+}
+.reviews__item:hover {
+  background-color: rgb(172, 172, 172);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.reviews__image {
+  width: 300px;
+}
+
+.reviews__container li p {
+  padding: 0.25em;
+  margin: 0 2em;
+  text-align: left;
+}

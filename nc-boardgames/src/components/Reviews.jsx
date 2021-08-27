@@ -1,33 +1,39 @@
+import { useEffect, useState } from "react";
+import { getReviews } from "../Api";
+
 const Reviews = () => {
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    getReviews().then((data) => {
+      setReviews(data);
+    });
+  }, []);
+
   return (
-    <div>
-      <p>reviews</p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos,
-        voluptate harum, cumque at sequi excepturi voluptas quos ullam, mollitia
-        quaerat possimus cum blanditiis officia nemo eum numquam aperiam a iure!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos,
-        voluptate harum, cumque at sequi excepturi voluptas quos ullam, mollitia
-        quaerat possimus cum blanditiis officia nemo eum numquam aperiam a iure!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos,
-        voluptate harum, cumque at sequi excepturi voluptas quos ullam, mollitia
-        quaerat possimus cum blanditiis officia nemo eum numquam aperiam a iure!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos,
-        voluptate harum, cumque at sequi excepturi voluptas quos ullam, mollitia
-        quaerat possimus cum blanditiis officia nemo eum numquam aperiam a iure!
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos,
-        voluptate harum, cumque at sequi excepturi voluptas quos ullam, mollitia
-        quaerat possimus cum blanditiis officia nemo eum numquam aperiam a iure!
-      </p>
-    </div>
+    <section>
+      <h2>Reviews</h2>
+      <ul className="reviews__container">
+        {reviews.map((review) => {
+          return (
+            <li className="reviews__item" key={review.review_id}>
+              <h3 className="reviews__item-title">{review.title}</h3>
+              <img
+                className="reviews__image"
+                src={review.review_img_url}
+                alt={review.review_title}
+              />
+              <p>User: {review.owner}</p>
+              <p>Category: {review.category}</p>
+              <p>Created at: {review.created_at}</p>
+              <p>Comment count: {review.comment_count}</p>
+              <p>Review ID: {review.review_id}</p>
+              <p>Votes: {review.votes}</p>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
   );
 };
 
