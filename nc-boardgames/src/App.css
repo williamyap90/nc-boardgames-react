@@ -7,6 +7,7 @@
   padding: 0;
   scroll-behavior: smooth;
 }
+
 html {
   /* font-size: 62.5%; */
   height: 100vh;
@@ -16,23 +17,36 @@ body {
   font-family: "Merriweather", serif;
   background: url("./images/cream_dust.png") repeat 0 0;
 }
+
+:root {
+  /* Colours */
+  --box-light: rgb(239, 240, 242);
+  --box-dark: rgb(224, 225, 228);
+  --clr-accent: rgb(244, 199, 22);
+  --clr-light: #fff;
+  --clr-dark: rgb(33, 36, 48);
+
+  /* Box styling */
+  --box-radius: 0.5em;
+}
+
 /* Header */
 .site__header-bar {
   padding: 0.5em;
-  background-color: rgb(55, 55, 55);
+  background-color: var(--clr-dark);
 }
 
 .site__header {
   padding: 4em;
   background-image: url("./images/ncbg.jpg");
-  background-color: rgb(244, 199, 22);
+  background-color: var(--clr-accent);
   background-blend-mode: multiply;
 }
 
 h1 {
-  font-family: "Merriweather", serif;
+  font-family: "Fira Sans", sans-serif;
   font-size: 3em;
-  font-weight: 900;
+  font-weight: 700;
   text-align: center;
   color: white;
   text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
@@ -40,17 +54,13 @@ h1 {
 }
 
 /* Navigation */
-nav {
-  background-color: #333;
+.nav__bar {
+  background-color: var(--clr-dark);
   display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-  margin: 0 auto;
-  background: rgb(55, 55, 55);
+  justify-content: space-around;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
-  box-shadow: 0px 5px 0px #c1c1c1;
-  overflow: hidden;
+  box-shadow: 0px 5px 0px #a9a9a9;
   margin-bottom: 1.5em;
 }
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
@@ -64,9 +74,6 @@ nav {
 .sticky + .content {
   padding-top: 60px;
 }
-p {
-  margin: 5em;
-}
 
 nav ul {
   list-style: none;
@@ -78,11 +85,11 @@ nav ul li {
   display: inline-block;
   padding: 0.3em;
   text-decoration: none;
-  color: rgb(255, 255, 255);
-  font-weight: 600;
+  color: var(--clr-light);
   font-size: 1.25em;
+  font-weight: 600;
   text-transform: uppercase;
-  margin: 0 0.1em;
+  margin: 0 1em;
   padding: 0.5em;
 }
 
@@ -115,15 +122,15 @@ nav ul li:hover {
 }
 .reviews__item {
   list-style: none;
-  border-radius: 1em;
+  border-radius: var(--box-radius);
   padding: 2em;
   margin: 1em;
-  background-color: #c1c1c1;
+  background-color: var(--box-light);
   width: 450px;
   font-size: 0.9rem;
 }
 .reviews__item:hover {
-  background-color: rgb(173, 173, 173);
+  background-color: var(--box-dark);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
@@ -140,10 +147,10 @@ nav ul li:hover {
 
 .single_review__item {
   list-style: none;
-  border-radius: 1em;
+  border-radius: var(--box-radius);
   padding: 2em;
   margin: 1em;
-  background-color: #c1c1c1;
+  background-color: var(--box-light);
   width: 90%;
   font-size: 0.9rem;
 }
@@ -169,15 +176,15 @@ nav ul li:hover {
 
 .category__item {
   list-style: none;
-  border-radius: 1em;
+  border-radius: var(--box-radius);
   padding: 1em;
   margin: 1em;
-  background-color: #c1c1c1;
+  background-color: var(--box-light);
   width: 450px;
   font-size: 0.9rem;
 }
 .category__item:hover {
-  background-color: rgb(173, 173, 173);
+  background-color: var(--box-dark);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
@@ -197,16 +204,16 @@ nav ul li:hover {
 
 .user__item {
   list-style: none;
-  border-radius: 1em;
+  border-radius: var(--box-radius);
   padding: 1em;
   margin: 1em;
-  background-color: #c1c1c1;
+  background-color: var(--box-light);
   width: 450px;
   font-size: 0.9rem;
 }
 
 .user__item:hover {
-  background-color: rgb(173, 173, 173);
+  background-color: var(--box-dark);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
@@ -223,8 +230,8 @@ nav ul li:hover {
 
 /* Comments */
 .comments__container {
-  background-color: white;
-  border-radius: 1em;
+  background-color: var(--clr-light);
+  border-radius: var(--box-radius);
   padding: 1em;
   margin: 1em;
 }

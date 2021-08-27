@@ -9,15 +9,15 @@ const Nav = () => {
           <h1>NC Board Games API</h1>
         </Link>
       </div>
-      <nav id="navbar">
+      <nav className="nav__bar">
         <ul>
-          <Link to="/reviews">
+          <Link to="/reviews" className="nav__item">
             <li>Reviews</li>
           </Link>
-          <Link to="/categories">
+          <Link to="/categories" className="nav__item">
             <li>Categories</li>
           </Link>
-          <Link to="/users">
+          <Link to="/users" className="nav__item">
             <li>Users</li>
           </Link>
         </ul>
