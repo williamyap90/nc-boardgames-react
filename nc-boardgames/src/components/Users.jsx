@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getUsers } from "../Api";
+import { Link } from "react-router-dom";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -25,6 +26,9 @@ const Users = () => {
               />
               <p>Username: {user.username}</p>
               <p>Name: {user.name}</p>
+              <Link to={`/users/${user.username}`}>
+                <button className="users__button">View profile</button>
+              </Link>
             </li>
           );
         })}

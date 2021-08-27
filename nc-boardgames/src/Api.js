@@ -23,3 +23,8 @@ export const getSingleReview = async (review_id) => {
   const { data } = await api.get(`/reviews/${review_id}`);
   return data.review[0];
 };
+
+export const getSingleUser = async (username) => {
+  const { data } = await api.get(`/users/${username}`);
+  return data.user[0];
+};

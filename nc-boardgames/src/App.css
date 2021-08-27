@@ -206,7 +206,8 @@ nav ul li a:hover:after {
   font-size: 0.9rem;
 }
 
-.reviews__button {
+.reviews__button,
+.users__button {
   padding: 1em;
 }
 

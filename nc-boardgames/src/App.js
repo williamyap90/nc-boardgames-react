@@ -30,7 +30,7 @@ function App() {
           <Route exact path="/users">
             <Users />
           </Route>
-          <Route exact path="/users/:user_id">
+          <Route exact path="/users/:username">
             <SingleUser />
           </Route>
         </Switch>
