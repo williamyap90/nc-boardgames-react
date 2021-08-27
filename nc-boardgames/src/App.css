@@ -1,3 +1,164 @@
 .App {
   text-align: center;
 }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+html {
+  /* font-size: 62.5%; */
+  height: 100vh;
+}
+
+body {
+  font-family: "Merriweather", serif;
+  background: url("./images/cream_dust.png") repeat 0 0;
+}
+/* Header */
+.site__header-bar {
+  padding: 0.5em;
+  background-color: rgb(55, 55, 55);
+}
+
+.site__header {
+  padding: 5em;
+  background-image: url("./images/ncbg.jpg");
+  background-color: rgb(244, 199, 22);
+  background-blend-mode: multiply;
+}
+
+h1 {
+  font-family: "Merriweather", serif;
+  font-size: 3em;
+  font-weight: 900;
+  text-align: center;
+  color: white;
+  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
+    0px 18px 23px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+
+/* Navigation */
+nav {
+  background-color: #333;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  margin: 0 auto;
+  background: rgb(55, 55, 55);
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  box-shadow: 0px 5px 0px #c1c1c1;
+  overflow: hidden;
+  margin-bottom: 1.5em;
+}
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 60px;
+}
+p {
+  margin: 5em;
+}
+
+nav ul {
+  list-style: none;
+  text-align: center;
+}
+nav ul li {
+  display: inline-block;
+}
+nav ul li a {
+  font-family: "Fira Sans", sans-serif;
+  display: block;
+  padding: 0.3em;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  font-size: 1.25em;
+  text-transform: uppercase;
+  margin: 0 0.1em;
+  padding: 0.5em;
+}
+nav ul li a,
+nav ul li a:after,
+nav ul li a:before {
+  transition: all 0.2s;
+}
+nav ul li a:hover {
+  color: #555;
+}
+
+nav ul li a {
+  position: relative;
+}
+nav ul li a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: ".";
+  color: transparent;
+  background: #aaa;
+  height: 1px;
+}
+nav ul li a {
+  transition: all 1s;
+}
+
+nav ul li a:after {
+  text-align: left;
+  content: ".";
+  margin: 0;
+  opacity: 0;
+}
+nav ul li a:hover {
+  color: #fff;
+  z-index: 1;
+}
+nav ul li a:hover:after {
+  z-index: -10;
+  animation: fill 0.5s forwards;
+  -webkit-animation: fill 0.5s forwards;
+  -moz-animation: fill 0.5s forwards;
+  opacity: 1;
+}
+
+@-webkit-keyframes fill {
+  0% {
+    width: 0%;
+    height: 1px;
+  }
+  50% {
+    width: 100%;
+    height: 1px;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    background: rgb(22, 177, 244);
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  html {
+    background-color: rgba(24, 24, 24, 0.653);
+    background-image: url("./images/ncbg.jpg");
+    background-blend-mode: multiply;
+  }
+  body {
+    min-height: 100vh;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+}
