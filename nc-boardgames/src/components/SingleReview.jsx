@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getSingleReview } from "../Api";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const SingleReview = () => {
   const [singleReview, setSingleReview] = useState({});
@@ -31,6 +31,9 @@ const SingleReview = () => {
           <p>Comment count: {singleReview.comment_count}</p>
           <p>Review ID: {singleReview.review_id}</p>
           <p>Votes: {singleReview.votes}</p>
+          <Link to="/reviews">
+            <button className="reviews__button">Go back</button>
+          </Link>
         </li>
       </ul>
     </section>

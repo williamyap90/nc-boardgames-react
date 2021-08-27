@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getReviews } from "../Api";
-// To do: link to single review on each review card
+import { Link } from "react-router-dom";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -30,10 +30,14 @@ const Reviews = () => {
               <p>Comment count: {review.comment_count}</p>
               <p>Review ID: {review.review_id}</p>
               <p>Votes: {review.votes}</p>
+              <Link to={`/reviews/${review.review_id}`}>
+                <button className="reviews__button">View more</button>
+              </Link>
             </li>
           );
         })}
       </ul>
+      <p> Showing 1-10 of 24</p>
     </section>
   );
 };

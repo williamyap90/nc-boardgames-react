@@ -171,8 +171,7 @@ nav ul li a:hover:after {
   align-items: center;
   justify-content: center;
 }
-.reviews__item,
-.single_review__item {
+.reviews__item {
   list-style: none;
   border-radius: 1em;
   padding: 2em;
@@ -195,6 +194,20 @@ nav ul li a:hover:after {
   padding: 0.25em;
   margin: 0 2em;
   text-align: left;
+}
+
+.single_review__item {
+  list-style: none;
+  border-radius: 1em;
+  padding: 2em;
+  margin: 1em;
+  background-color: #c1c1c1;
+  width: 90%;
+  font-size: 0.9rem;
+}
+
+.reviews__button {
+  padding: 1em;
 }
 
 .single_review__container li p {
