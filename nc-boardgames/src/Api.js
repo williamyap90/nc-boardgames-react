@@ -13,3 +13,8 @@ export const getCategories = async () => {
   const { data } = await api.get("/categories");
   return data.result;
 };
+
+export const getUsers = async () => {
+  const { data } = await api.get("/users");
+  return data.users;
+};

@@ -221,3 +221,37 @@ nav ul li a:hover:after {
   margin: 0 2em;
   text-align: center;
 }
+
+/* Users */
+.users__container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.user__item {
+  list-style: none;
+  border-radius: 1em;
+  padding: 1em;
+  margin: 1em;
+  background-color: #c1c1c1;
+  width: 450px;
+  font-size: 0.9rem;
+}
+
+.user__item:hover {
+  background-color: rgb(173, 173, 173);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.user__image {
+  width: 250px;
+  margin-top: 1em;
+}
+
+.user__item > p {
+  padding: 0.25em;
+  text-align: center;
+  margin: 0;
+}
