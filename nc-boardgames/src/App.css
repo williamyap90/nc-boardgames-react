@@ -164,19 +164,24 @@ nav ul li a:hover:after {
 }
 
 /* Reviews */
-.reviews__container {
-  border: 1px solid red;
-}
 
+.reviews__container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
 .reviews__item {
   list-style: none;
-  border-radius: 3em;
-  padding: 1em;
+  border-radius: 2em;
+  padding: 2em;
   margin: 1em;
-  background-color: rgb(219, 219, 219);
+  background-color: #c1c1c1;
+  width: 450px;
+  font-size: 0.9rem;
 }
 .reviews__item:hover {
-  background-color: rgb(172, 172, 172);
+  background-color: rgb(173, 173, 173);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
