@@ -7,6 +7,7 @@ import Categories from "./components/Categories";
 import Reviews from "./components/Reviews";
 import Users from "./components/Users";
 import SingleReview from "./components/SingleReview";
+import SingleUser from "./components/SingleUser";
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route exact path="/users">
             <Users />
+          </Route>
+          <Route exact path="/users/:user_id">
+            <SingleUser />
           </Route>
         </Switch>
       </section>
