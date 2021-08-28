@@ -24,8 +24,9 @@ const SingleReview = () => {
   };
 
   return (
-    <section>
-      <Divider horizontal class="page__divider">
+    <section className="section__body section__body-review">
+      {" "}
+      <Divider horizontal className="page__divider">
         Review
       </Divider>
       <ul className="single_review__container">

@@ -12,8 +12,8 @@ const Categories = () => {
   }, []);
 
   return (
-    <section>
-      <Divider horizontal class="page__divider">
+    <section className="section__body section__body-categories">
+      <Divider horizontal className="page__divider">
         Categories
       </Divider>
       <ul className="category__container">

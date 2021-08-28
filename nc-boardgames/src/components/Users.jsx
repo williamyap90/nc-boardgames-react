@@ -13,8 +13,8 @@ const Users = () => {
   }, []);
 
   return (
-    <section>
-      <Divider horizontal class="page__divider">
+    <section className="section__body section__body-users">
+      <Divider horizontal className="page__divider">
         Users
       </Divider>
       <ul className="users__container">
