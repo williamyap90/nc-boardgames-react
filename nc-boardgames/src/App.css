@@ -8,14 +8,11 @@
   scroll-behavior: smooth;
 }
 
-html {
-  /* font-size: 62.5%; */
-  height: 100vh;
-}
-
 body {
   font-family: "Merriweather", serif;
   background: url("./images/cream_dust.png") repeat 0 0;
+  margin: 0 auto !important;
+  padding-bottom: 2em;
 }
 
 :root {
@@ -66,17 +63,6 @@ h1 {
   box-shadow: 0px 5px 0px #a9a9a9;
   margin-bottom: 3em;
 }
-/* The sticky class is added to the navbar with JS when it reaches its scroll position */
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-}
-
-/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-.sticky + .content {
-  padding-top: 60px;
-}
 
 nav ul {
   list-style: none;
@@ -109,13 +95,16 @@ nav ul li:hover {
   body {
     min-height: 100vh;
     max-width: 1000px;
-    margin: 0 auto;
     box-shadow: 2.5em 0 1em -1.5em rgba(0, 0, 0, 0.4),
       -2.5em 0 1em -1.5em rgba(0, 0, 0, 0.4);
   }
 }
 
 /* Reviews */
+.section__body {
+  background: url("./images/cream_dust.png") repeat 0 0;
+}
+
 .reviews__container,
 .single_review__container {
   margin-top: 2em;
@@ -142,6 +131,8 @@ nav ul li:hover {
 .reviews__image,
 .single_review__image {
   width: 300px;
+  height: 200px;
+  object-fit: cover;
 }
 
 .reviews__container li p {
@@ -172,6 +163,10 @@ nav ul li:hover {
   text-align: left;
 }
 
+.reviews__pagination {
+  padding-top: 1em;
+  padding-bottom: 3em;
+}
 /* Categories */
 .category__container {
   margin-top: 2em;
