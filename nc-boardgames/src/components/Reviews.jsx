@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getReviews } from "../Api";
 import { Link } from "react-router-dom";
+import { Button, Icon } from "semantic-ui-react";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -31,7 +32,12 @@ const Reviews = () => {
               <p>Review ID: {review.review_id}</p>
               <p>Votes: {review.votes}</p>
               <Link to={`/reviews/${review.review_id}`}>
-                <button className="reviews__button">View more</button>
+                <Button animated className="reviews__button">
+                  <Button.Content visible>View more</Button.Content>
+                  <Button.Content hidden>
+                    <Icon name="arrow right" />
+                  </Button.Content>
+                </Button>
               </Link>
             </li>
           );

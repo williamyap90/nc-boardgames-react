@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getSingleReview, getCommentsByReviewId } from "../Api";
 import { useParams, Link } from "react-router-dom";
+import { Button, Icon } from "semantic-ui-react";
 
 const SingleReview = () => {
   const { review_id } = useParams();
@@ -41,7 +42,8 @@ const SingleReview = () => {
           <p>Comment count: {singleReview.comment_count}</p>
           <p>Review ID: {singleReview.review_id}</p>
           <p>Votes: {singleReview.votes}</p>
-          <button
+          <Button
+            animated
             className="reviews__button"
             onClick={() => {
               getComments(singleReview.review_id);
@@ -50,10 +52,18 @@ const SingleReview = () => {
                 : setShowComments(true);
             }}
           >
-            View comments
-          </button>
+            <Button.Content visible>View comments</Button.Content>
+            <Button.Content hidden>
+              <Icon name="chevron down" />
+            </Button.Content>
+          </Button>
           <Link to="/reviews">
-            <button className="reviews__button">Go back</button>
+            <Button animated className="reviews__button">
+              <Button.Content visible>Go back</Button.Content>
+              <Button.Content hidden>
+                <Icon name="arrow left" />
+              </Button.Content>
+            </Button>
           </Link>
           {showComments &&
             comments.map((comment) => {

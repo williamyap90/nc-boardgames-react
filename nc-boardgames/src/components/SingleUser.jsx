@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getSingleUser } from "../Api";
 import { useParams, Link } from "react-router-dom";
+import { Button, Icon } from "semantic-ui-react";
 
 const SingleUser = () => {
   const [singleUser, setSingleUser] = useState([]);
@@ -26,7 +27,12 @@ const SingleUser = () => {
           <p>Username: {singleUser.username}</p>
           <p>Name: {singleUser.name}</p>
           <Link to="/users">
-            <button className="users__button">Go back</button>
+            <Button animated className="users__button">
+              <Button.Content visible>Go back</Button.Content>
+              <Button.Content hidden>
+                <Icon name="arrow left" />
+              </Button.Content>
+            </Button>
           </Link>
         </li>
       </ul>
