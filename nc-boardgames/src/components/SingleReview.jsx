@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getSingleReview, getCommentsByReviewId } from "../Api";
 import { useParams, Link } from "react-router-dom";
 import { Button, Icon, Divider } from "semantic-ui-react";
+import Comments from "./Comments";
 
 const SingleReview = () => {
   const { review_id } = useParams();
@@ -70,15 +71,7 @@ const SingleReview = () => {
           </Link>
           {showComments &&
             comments.map((comment) => {
-              return (
-                <div className="comments__container" key={comment.comment_id}>
-                  <p>Comment ID: {comment.comment_id}</p>
-                  <p>Author: {comment.author}</p>
-                  <p>Comment: {comment.body}</p>
-                  <p>Created at: {comment.created_at}</p>
-                  <p>Votes: {comment.votes}</p>
-                </div>
-              );
+              return Comments(comment);
             })}
         </li>
       </ul>
