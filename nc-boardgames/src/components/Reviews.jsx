@@ -14,6 +14,7 @@ const Reviews = () => {
 
   return (
     <section className="section__body section__body-reviews">
+      <div className="page__divider_div"></div>
       <Divider horizontal className="page__divider">
         Reviews
       </Divider>
@@ -23,7 +24,7 @@ const Reviews = () => {
             <li className="reviews__item" key={review.review_id}>
               <h3 className="reviews__item-title">{review.title}</h3>
               <Reveal animated="move">
-                <Reveal.Content visible class="reviews__item">
+                <Reveal.Content visible className="reviews__item">
                   <img
                     src={review.review_img_url}
                     alt={review.review_title}

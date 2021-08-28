@@ -13,6 +13,7 @@ const Categories = () => {
 
   return (
     <section className="section__body section__body-categories">
+      <div className="page__divider_div"></div>
       <Divider horizontal className="page__divider">
         Categories
       </Divider>

@@ -15,6 +15,7 @@ const SingleUser = () => {
 
   return (
     <section className="section__body section__body-user">
+      <div className="page__divider_div"></div>
       <Divider horizontal className="page__divider">
         User
       </Divider>
