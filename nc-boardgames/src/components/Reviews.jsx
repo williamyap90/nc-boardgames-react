@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getReviews } from "../Api";
 import { Link } from "react-router-dom";
-import { Button, Icon, Divider, Reveal, Image } from "semantic-ui-react";
+import { Button, Icon, Divider, Reveal } from "semantic-ui-react";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -24,7 +24,11 @@ const Reviews = () => {
               <h3 className="reviews__item-title">{review.title}</h3>
               <Reveal animated="move">
                 <Reveal.Content visible class="reviews__item">
-                  <Image src={review.review_img_url} size="massive" />
+                  <img
+                    src={review.review_img_url}
+                    alt={review.review_title}
+                    className="reviews__image"
+                  />
                 </Reveal.Content>
                 <Reveal.Content hidden>
                   <p>{review.review_title}</p>
