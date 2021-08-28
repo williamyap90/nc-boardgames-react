@@ -6,7 +6,7 @@ const Nav = () => {
       <div className="site__header-bar"></div>
       <div className="site__header">
         <Link to="/">
-          <h1>NC Board Games API</h1>
+          <h1>NC Board Games</h1>
         </Link>
       </div>
       <nav className="nav__bar">
