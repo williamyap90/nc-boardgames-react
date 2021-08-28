@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getCategories } from "../Api";
+import { Divider } from "semantic-ui-react";
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
@@ -12,7 +13,9 @@ const Categories = () => {
 
   return (
     <section>
-      <h2>Categories</h2>
+      <Divider horizontal class="page__divider">
+        Categories
+      </Divider>
       <ul className="category__container">
         {categories.map((category) => {
           return (

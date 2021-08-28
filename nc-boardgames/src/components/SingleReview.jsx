@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getSingleReview, getCommentsByReviewId } from "../Api";
 import { useParams, Link } from "react-router-dom";
-import { Button, Icon } from "semantic-ui-react";
+import { Button, Icon, Divider } from "semantic-ui-react";
 
 const SingleReview = () => {
   const { review_id } = useParams();
@@ -25,7 +25,9 @@ const SingleReview = () => {
 
   return (
     <section>
-      <h2>Review</h2>
+      <Divider horizontal class="page__divider">
+        Review
+      </Divider>
       <ul className="single_review__container">
         <li className="single_review__item" key={singleReview.review_id}>
           <h3 className="single_review__item-title">{singleReview.title}</h3>

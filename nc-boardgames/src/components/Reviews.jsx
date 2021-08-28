@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getReviews } from "../Api";
 import { Link } from "react-router-dom";
-import { Button, Icon } from "semantic-ui-react";
+import { Button, Icon, Divider } from "semantic-ui-react";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -14,7 +14,9 @@ const Reviews = () => {
 
   return (
     <section>
-      <h2>Reviews</h2>
+      <Divider horizontal class="page__divider">
+        Reviews
+      </Divider>
       <ul className="reviews__container">
         {reviews.map((review) => {
           return (

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getUsers } from "../Api";
 import { Link } from "react-router-dom";
-import { Button, Icon } from "semantic-ui-react";
+import { Button, Icon, Divider } from "semantic-ui-react";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -14,7 +14,9 @@ const Users = () => {
 
   return (
     <section>
-      <h2>Users</h2>
+      <Divider horizontal class="page__divider">
+        Users
+      </Divider>
       <ul className="users__container">
         {users.map((user) => {
           return (

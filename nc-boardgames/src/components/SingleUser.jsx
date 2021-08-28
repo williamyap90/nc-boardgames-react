@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getSingleUser } from "../Api";
 import { useParams, Link } from "react-router-dom";
-import { Button, Icon } from "semantic-ui-react";
+import { Button, Icon, Divider } from "semantic-ui-react";
 
 const SingleUser = () => {
   const [singleUser, setSingleUser] = useState([]);
@@ -15,7 +15,9 @@ const SingleUser = () => {
 
   return (
     <section>
-      <h2>Users</h2>
+      <Divider horizontal class="page__divider">
+        User
+      </Divider>
       <ul className="users__container">
         <li className="user__item" key={singleUser.username}>
           <h3 className="user__item-title"> {singleUser.username}</h3>

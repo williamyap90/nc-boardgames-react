@@ -64,7 +64,7 @@ h1 {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   box-shadow: 0px 5px 0px #a9a9a9;
-  margin-bottom: 1.5em;
+  margin-bottom: 3em;
 }
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
 .sticky {
@@ -118,6 +118,7 @@ nav ul li:hover {
 /* Reviews */
 .reviews__container,
 .single_review__container {
+  margin-top: 2em;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -173,6 +174,7 @@ nav ul li:hover {
 
 /* Categories */
 .category__container {
+  margin-top: 2em;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -202,6 +204,7 @@ nav ul li:hover {
 
 /* Users */
 .users__container {
+  margin-top: 2em;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
