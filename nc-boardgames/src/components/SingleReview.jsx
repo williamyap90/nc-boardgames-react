@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getSingleReview, getCommentsByReviewId } from "../Api";
 import { useParams, Link } from "react-router-dom";
 import { Button, Icon, Divider } from "semantic-ui-react";
-import Comments from "./Comments";
+import displayComment from "./Comments";
 
 const SingleReview = () => {
   const { review_id } = useParams();
@@ -71,7 +71,7 @@ const SingleReview = () => {
           </Link>
           {showComments &&
             comments.map((comment) => {
-              return Comments(comment);
+              return displayComment(comment);
             })}
         </li>
       </ul>

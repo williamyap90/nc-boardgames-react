@@ -1,4 +1,4 @@
-const Comments = (comment) => {
+const displayComment = (comment) => {
   return (
     <div className="comments__container" key={comment.comment_id}>
       <p>Comment ID: {comment.comment_id}</p>
@@ -10,4 +10,4 @@ const Comments = (comment) => {
   );
 };
 
-export default Comments;
+export default displayComment;
