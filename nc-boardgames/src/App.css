@@ -85,7 +85,7 @@ nav ul li:hover {
   color: rgb(210, 70, 70);
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1500px) {
   html {
     background-color: rgba(24, 24, 24, 0.653);
     background-image: url("./images/ncbg.jpg");
@@ -93,7 +93,7 @@ nav ul li:hover {
   }
   body {
     min-height: 100vh;
-    max-width: 1000px;
+    max-width: 1500px;
     box-shadow: 2.5em 0 1em -1.5em rgba(0, 0, 0, 0.4),
       -2.5em 0 1em -1.5em rgba(0, 0, 0, 0.4);
   }
@@ -120,7 +120,7 @@ nav ul li:hover {
   list-style: none;
   border-radius: var(--box-radius);
   border: 1px solid var(--box-dark);
-  padding: 2em;
+  padding: 1em;
   margin: 1em;
   background-color: var(--box-light);
   width: 450px;
@@ -133,7 +133,7 @@ nav ul li:hover {
 }
 
 .reviews__image {
-  width: 400px;
+  width: 450px;
   height: 300px;
   object-fit: cover;
 }
@@ -232,6 +232,7 @@ nav ul li:hover {
   margin: 1em;
   background-color: var(--box-light);
   width: 450px;
+  height: 400px;
   font-size: 0.9rem;
 }
 
@@ -242,7 +243,8 @@ nav ul li:hover {
 
 .user__image {
   width: 250px;
-  margin-top: 1em;
+  height: 250px;
+  object-fit: cover;
 }
 
 .user__item > p {
