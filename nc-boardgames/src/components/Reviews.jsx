@@ -22,9 +22,8 @@ const Reviews = () => {
         {reviews.map((review) => {
           return (
             <li className="reviews__item" key={review.review_id}>
-              <h3 className="reviews__item-title">{review.title}</h3>
               <Reveal animated="move">
-                <Reveal.Content visible className="reviews__item">
+                <Reveal.Content visible className="reviews__item-reveal">
                   <img
                     src={review.review_img_url}
                     alt={review.review_title}
@@ -49,6 +48,7 @@ const Reviews = () => {
                   </Link>
                 </Reveal.Content>
               </Reveal>
+              <h3 className="reviews__item-title">{review.title}</h3>
             </li>
           );
         })}
