@@ -121,6 +121,7 @@ nav ul li:hover {
   margin: 1em;
   background-color: var(--box-light);
   width: 450px;
+  height: 400px;
   font-size: 0.9rem;
 }
 .reviews__item:hover {
@@ -128,10 +129,9 @@ nav ul li:hover {
   box-shadow: var(--box-shadow);
 }
 
-.reviews__image,
-.single_review__image {
-  width: 300px;
-  height: 200px;
+.reviews__image {
+  width: 400px;
+  height: 300px;
   object-fit: cover;
 }
 
@@ -150,6 +150,12 @@ nav ul li:hover {
   background-color: var(--box-light);
   width: 90%;
   font-size: 0.9rem;
+}
+
+.single_review__image {
+  width: 500px;
+  height: 400px;
+  object-fit: cover;
 }
 
 .reviews__button,
@@ -178,12 +184,18 @@ nav ul li:hover {
 
 .category__item {
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   border-radius: var(--box-radius);
   border: 1px solid var(--box-dark);
   padding: 1em;
   margin: 1em;
   background-color: var(--box-light);
   width: 450px;
+  height: 200px;
   font-size: 0.9rem;
 }
 .category__item:hover {
@@ -191,6 +203,9 @@ nav ul li:hover {
   box-shadow: var(--box-shadow);
 }
 
+.category__item-title {
+  text-transform: capitalize;
+}
 .category__container li p {
   padding: 0.25em;
   margin: 0 2em;
