@@ -22,7 +22,7 @@ body {
   --box-hover: rgb(243, 244, 247);
   --clr-accent: rgb(244, 199, 22);
   --clr-light: #fff;
-  --clr-dark: rgb(33, 36, 48);
+  --clr-dark: rgb(33, 33, 33);
 
   /* Box styling */
   --box-radius: 0.5em;
@@ -37,13 +37,13 @@ body {
 }
 
 .site__header {
-  padding: 4em;
+  padding: 1em;
   background-image: url("./images/ncbg.jpg");
-  background-color: var(--clr-accent);
+  background-color: #1a2437;
   background-blend-mode: multiply;
 }
 
-h1 {
+/* h1 {
   font-family: "Fira Sans", sans-serif;
   font-size: 3em;
   font-weight: 700;
@@ -51,8 +51,11 @@ h1 {
   color: white;
   text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
     0px 18px 23px rgba(0, 0, 0, 0.1);
+} */
+.header__logo {
+  max-width: 30%;
+  height: auto;
 }
-
 /* Navigation */
 .nav__bar {
   background-color: var(--clr-dark);
@@ -60,7 +63,10 @@ h1 {
   justify-content: space-around;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
-  box-shadow: 0px 5px 0px #a9a9a9;
+  box-shadow: 0px 50px 0px var(--clr-accent);
+}
+.nav__footer {
+  padding: 0.2em;
 }
 
 nav ul {
@@ -82,12 +88,12 @@ nav ul li {
 }
 
 nav ul li:hover {
-  color: rgb(210, 70, 70);
+  color: var(--clr-accent);
 }
 
 @media screen and (min-width: 1500px) {
   html {
-    background-color: rgba(24, 24, 24, 0.653);
+    background-color: rgba(24, 24, 24, 0.906);
     background-image: url("./images/ncbg.jpg");
     background-blend-mode: multiply;
   }

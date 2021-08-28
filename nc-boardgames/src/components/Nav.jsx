@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logo from "../images/ncbg_logo.png";
 
 const Nav = () => {
   return (
@@ -6,7 +7,7 @@ const Nav = () => {
       <div className="site__header-bar"></div>
       <div className="site__header">
         <Link to="/">
-          <h1>NC Board Games</h1>
+          <img src={logo} alt="NC Board Games" className="header__logo" />
         </Link>
       </div>
       <nav className="nav__bar">
@@ -22,6 +23,7 @@ const Nav = () => {
           </Link>
         </ul>
       </nav>
+      <div className="nav__footer"></div>
     </section>
   );
 };
