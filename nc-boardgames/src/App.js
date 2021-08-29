@@ -12,30 +12,32 @@ import SingleUser from "./components/SingleUser";
 function App() {
   return (
     <BrowserRouter>
-      <Nav />
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route exact path="/reviews">
-          <Reviews />
-        </Route>
-        <Route exact path="/reviews/:review_id">
-          <SingleReview />
-        </Route>
-        <Route exact path="/categories">
-          <Categories />
-        </Route>
-        <Route exact path="/categories/:category">
-          <Categories />
-        </Route>
-        <Route exact path="/users">
-          <Users />
-        </Route>
-        <Route exact path="/users/:username">
-          <SingleUser />
-        </Route>
-      </Switch>
+      <section className="App">
+        <Nav />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/reviews">
+            <Reviews />
+          </Route>
+          <Route exact path="/reviews/:review_id">
+            <SingleReview />
+          </Route>
+          <Route exact path="/categories">
+            <Categories />
+          </Route>
+          <Route exact path="/categories/:category">
+            <Categories />
+          </Route>
+          <Route exact path="/users">
+            <Users />
+          </Route>
+          <Route exact path="/users/:username">
+            <SingleUser />
+          </Route>
+        </Switch>
+      </section>
     </BrowserRouter>
   );
 }
