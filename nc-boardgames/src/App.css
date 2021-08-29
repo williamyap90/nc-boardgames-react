@@ -40,12 +40,11 @@ body {
 
 h3 {
   font-family: var(--ff-primary) !important;
-  font-weight: var(--fw-regular) !important;
 }
 
 #page__divider {
-  font-size: 1.3rem;
-  padding-top: 1.5em;
+  /* font-size: 1.3rem; */
+  /* padding-top: 1.5em; */
   color: rgb(150, 150, 150);
 }
 
@@ -124,15 +123,15 @@ nav ul li:hover {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1;
-    padding-top: 2em;
     /* border-bottom: 1px solid var(--clr-dark); */
   }
   .header__logo {
     grid-column: 1;
     justify-self: start;
     align-self: center;
-    max-width: 80%;
-    margin: 2em 0;
+    max-width: 100%;
+    margin-left: 2.5em;
+    margin-top: 2em;
   }
   .nav__bar {
     grid-column: 2;
@@ -152,6 +151,7 @@ nav ul li:hover {
     color: rgb(150, 150, 150);
   }
 }
+
 /* Reviews */
 .section__body {
   background: url("./images/cream_dust.png") repeat 0 0;
@@ -164,38 +164,132 @@ nav ul li:hover {
 .reviews__container {
   margin-top: 2em;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  justify-items: stretch;
 }
-.reviews__item {
-  list-style: none;
-  border-radius: var(--box-radius);
-  border: 1px solid var(--box-dark);
-  padding: 1em;
-  margin: 1em;
-  background-color: var(--box-light);
-  width: 400px;
-  height: 400px;
-  font-size: 0.9rem;
-}
-.reviews__item:hover {
-  background-color: var(--box-hover);
-  box-shadow: var(--box-shadow);
-}
+@media screen and (min-width: 800px) {
+  .reviews__item {
+    display: grid;
+    grid-template-areas:
+      "upvote img title category"
+      "vote img title id"
+      "downvote img owner comment";
+    grid-gap: 0em;
+    grid-template-columns: 1fr 1.5fr 5fr 1.5fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    list-style: none;
+    border: 1px solid var(--box-dark);
+    margin: 1em;
+    background-color: var(--box-light);
+    width: 90%;
+    height: 210px;
+    font-size: 1.15em;
+  }
+  .reviews__image {
+    grid-area: img;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    justify-self: center;
+    align-self: center;
+    padding: 0.5em;
+  }
 
-.reviews__image {
-  width: 370px;
-  height: 300px;
-  object-fit: cover;
+  /* Reviews cards */
+  .reviews__title {
+    grid-area: title;
+    font-size: 1.3em;
+    align-self: center;
+    justify-self: center;
+    /* padding: 0.5em; */
+  }
 }
-
+.reviews__details {
+  grid-area: owner;
+  align-self: start;
+}
+.reviews__owner {
+  font-weight: 700;
+}
+.reviews__created {
+  color: rgb(150, 150, 150);
+}
+.reviews__category {
+  grid-area: category;
+  text-transform: capitalize;
+  justify-self: end;
+  align-self: center;
+  font-weight: 700;
+}
+.reviews__comment {
+  grid-area: comment;
+  justify-self: end;
+  align-self: center;
+}
+.reviews__id {
+  grid-area: id;
+  justify-self: end;
+  align-self: center;
+}
+.reviews__upvote {
+  grid-area: upvote;
+  justify-self: center;
+  align-self: flex-end;
+}
+.reviews__downvote {
+  grid-area: downvote;
+  justify-self: center;
+  align-self: start;
+}
+.reviews__votes {
+  grid-area: vote;
+  justify-self: center;
+  align-self: center;
+  font-size: 0.9em;
+}
 .reviews__container li p {
   padding: 0.25em;
   margin: 0 2em;
-  text-align: left;
 }
 
+@media screen and (max-width: 800px) {
+  .reviews__item {
+    display: grid;
+    grid-template-areas:
+      "upvote category id"
+      "vote title title"
+      "downvote  owner comment";
+    grid-gap: 0;
+    grid-template-columns: 1fr 5fr 1.5fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    list-style: none;
+    border: 1px solid var(--box-dark);
+    margin: 1em;
+    background-color: var(--box-light);
+    width: 90%;
+  }
+  .reviews__image {
+    display: none;
+  }
+  .reviews__title {
+    grid-area: title;
+    font-size: 1.15em;
+    align-self: start;
+    justify-self: center;
+    word-wrap: break-word;
+
+    max-width: 100%;
+    padding-right: 1.25em;
+  }
+  .reviews__category {
+    justify-self: center;
+    align-self: center;
+  }
+}
+
+/* Single Review */
 .single_review__container {
   margin-top: 2em;
   display: flex;
@@ -204,7 +298,7 @@ nav ul li:hover {
 }
 
 .single_review__item {
-  border-radius: var(--box-radius);
+  /* border-radius: var(--box-radius); */
   border: 1px solid var(--box-dark);
   padding: 2em;
   margin: 1em;
