@@ -30,8 +30,8 @@ const SingleReview = () => {
       <Divider horizontal className="page__divider">
         Review
       </Divider>
-      <ul className="single_review__container">
-        <li className="single_review__item" key={singleReview.review_id}>
+      <div className="single_review__container" key={singleReview.review_id}>
+        <div className="single_review__item">
           <h3 className="single_review__item-title">{singleReview.title}</h3>
           <img
             className="single_review__image"
@@ -73,8 +73,8 @@ const SingleReview = () => {
             comments.map((comment) => {
               return displayComment(comment);
             })}
-        </li>
-      </ul>
+        </div>
+      </div>
     </section>
   );
 };
