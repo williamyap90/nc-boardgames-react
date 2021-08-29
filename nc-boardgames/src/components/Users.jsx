@@ -15,7 +15,7 @@ const Users = () => {
   return (
     <section className="section__body section__body-users">
       <div className="page__divider_div"></div>
-      <Divider horizontal className="page__divider">
+      <Divider horizontal className="page__divider" id="page__divider">
         Users
       </Divider>
       <ul className="users__container">

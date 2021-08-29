@@ -27,7 +27,7 @@ const SingleReview = () => {
   return (
     <section className="section__body section__body-review">
       <div className="page__divider_div"></div>
-      <Divider horizontal className="page__divider">
+      <Divider horizontal className="page__divider" id="page__divider">
         Review
       </Divider>
       <div className="single_review__container" key={singleReview.review_id}>

@@ -15,7 +15,7 @@ const Reviews = () => {
   return (
     <section className="section__body section__body-reviews">
       <div className="page__divider_div"></div>
-      <Divider horizontal className="page__divider">
+      <Divider horizontal className="page__divider" id="page__divider">
         Reviews
       </Divider>
       <ul className="reviews__container">
