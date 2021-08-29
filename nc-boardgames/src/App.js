@@ -27,6 +27,9 @@ function App() {
           <Route exact path="/categories">
             <Categories />
           </Route>
+          <Route exact path="/categories/:category">
+            <Categories />
+          </Route>
           <Route exact path="/users">
             <Users />
           </Route>
