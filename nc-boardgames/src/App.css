@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Raleway:wght@200;400;700&display=swap");
+
 .App {
   text-align: center;
 }
@@ -6,16 +8,16 @@
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
+  font-family: var(--ff-primary);
 }
-
-body {
-  font-family: "Merriweather", serif;
-  background: url("./images/cream_dust.png") repeat 0 0;
-  margin: 0 auto !important;
-  padding-bottom: 2em;
-}
-
 :root {
+  /* Fonts */
+  --ff-primary: "Raleway", sans-serif;
+  --ff-secondary: "Josefin Sans", sans-serif;
+
+  --fw-regular: 400;
+  --fw-bold: 700;
+
   /* Colours */
   --box-light: rgb(239, 240, 242);
   --box-dark: rgb(224, 225, 228);
@@ -30,30 +32,37 @@ body {
     rgb(150, 150, 150) 0px 0px 0px 2px;
 }
 
+body {
+  background: url("./images/cream_dust.png") repeat 0 0;
+  margin: 0 auto !important;
+  padding-bottom: 2em;
+}
+
+h3 {
+  font-family: var(--ff-primary) !important;
+  font-weight: var(--fw-regular) !important;
+}
+
+#page__divider {
+  font-size: 1.3rem;
+  padding-top: 1.5em;
+  color: rgb(150, 150, 150);
+}
+
 /* Header */
 .site__header-bar {
   padding: 0.5em;
   background-color: var(--clr-dark);
 }
 
-.site__header {
-  padding: 1em;
-  background-image: url("./images/ncbg.jpg");
-  background-color: #1a2437;
-  background-blend-mode: multiply;
+.site__header-container {
+  background: url("./images/cream_dust.png") repeat 0 0;
 }
 
-/* h1 {
-  font-family: "Fira Sans", sans-serif;
-  font-size: 3em;
-  font-weight: 700;
-  text-align: center;
-  color: white;
-  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
-    0px 18px 23px rgba(0, 0, 0, 0.1);
-} */
 .header__logo {
-  max-width: 30%;
+  background-color: rgba(255, 255, 255, 0);
+  padding: 2.5em 0;
+  max-width: 80%;
   height: auto;
 }
 /* Navigation */
@@ -63,7 +72,6 @@ body {
   justify-content: space-around;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
-  box-shadow: 0px 50px 0px var(--clr-accent);
 }
 .nav__footer {
   padding: 0.2em;
@@ -75,23 +83,29 @@ nav ul {
 }
 
 nav ul li {
-  font-family: "Fira Sans", sans-serif;
+  font-family: var(--ff-primary);
+  font-weight: var(--fw-regular);
+  font-size: 1.2em;
   display: inline-block;
   padding: 0.3em;
   text-decoration: none;
   color: var(--clr-light);
-  font-size: 1.25em;
-  font-weight: 600;
   text-transform: uppercase;
-  margin: 0 1em;
+  /* margin: 0 1em; */
   padding: 0.5em;
 }
 
 nav ul li:hover {
   color: var(--clr-accent);
 }
+/*  */
+.nav__item-text {
+  position: relative;
+}
 
-@media screen and (min-width: 1500px) {
+/*  */
+
+@media screen and (min-width: 1200px) {
   html {
     background-color: rgba(24, 24, 24, 0.906);
     background-image: url("./images/ncbg.jpg");
@@ -99,23 +113,55 @@ nav ul li:hover {
   }
   body {
     min-height: 100vh;
-    max-width: 1500px;
+    max-width: 1200px;
     box-shadow: 2.5em 0 1em -1.5em rgba(0, 0, 0, 0.4),
       -2.5em 0 1em -1.5em rgba(0, 0, 0, 0.4);
   }
 }
 
+@media screen and (min-width: 800px) {
+  .site__header-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1;
+    padding-top: 2em;
+    /* border-bottom: 1px solid var(--clr-dark); */
+  }
+  .header__logo {
+    grid-column: 1;
+    justify-self: start;
+    align-self: center;
+    max-width: 80%;
+    margin: 2em 0;
+  }
+  .nav__bar {
+    grid-column: 2;
+    background-color: rgba(0, 0, 0, 0);
+    justify-self: end;
+    align-self: center;
+    margin-right: 2em;
+  }
+  .nav__bar ul li {
+    color: var(--clr-dark);
+    font-weight: var(--fw-bold);
+    font-size: 1.5em;
+  }
+  #page__divider {
+    font-size: 1.6rem;
+    padding: 0.5em;
+    color: rgb(150, 150, 150);
+  }
+}
 /* Reviews */
 .section__body {
   background: url("./images/cream_dust.png") repeat 0 0;
 }
 .page__divider_div {
   background: url("./images/cream_dust.png") repeat 0 0;
-  padding-top: 2em;
+  padding-top: 0.1em;
 }
 
-.reviews__container,
-.single_review__container {
+.reviews__container {
   margin-top: 2em;
   display: flex;
   flex-wrap: wrap;
@@ -129,7 +175,7 @@ nav ul li:hover {
   padding: 1em;
   margin: 1em;
   background-color: var(--box-light);
-  width: 450px;
+  width: 400px;
   height: 400px;
   font-size: 0.9rem;
 }
@@ -139,7 +185,7 @@ nav ul li:hover {
 }
 
 .reviews__image {
-  width: 450px;
+  width: 370px;
   height: 300px;
   object-fit: cover;
 }
@@ -150,20 +196,25 @@ nav ul li:hover {
   text-align: left;
 }
 
+.single_review__container {
+  margin-top: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .single_review__item {
-  list-style: none;
   border-radius: var(--box-radius);
   border: 1px solid var(--box-dark);
   padding: 2em;
   margin: 1em;
   background-color: var(--box-light);
   width: 90%;
-  font-size: 0.9rem;
 }
 
 .single_review__image {
-  width: 500px;
-  height: 400px;
+  max-width: 90%;
+  height: auto;
   object-fit: cover;
 }
 
@@ -172,7 +223,7 @@ nav ul li:hover {
   padding: 1em;
 }
 
-.single_review__container li p {
+.single_review__container p {
   padding: 0.25em;
   margin: 0 2em;
   text-align: left;
@@ -203,7 +254,7 @@ nav ul li:hover {
   padding: 1em;
   margin: 1em;
   background-color: var(--box-light);
-  width: 450px;
+  width: 400px;
   height: 200px;
   font-size: 0.9rem;
 }
@@ -237,7 +288,7 @@ nav ul li:hover {
   padding: 1em;
   margin: 1em;
   background-color: var(--box-light);
-  width: 450px;
+  width: 400px;
   height: 400px;
   font-size: 0.9rem;
 }
@@ -264,5 +315,10 @@ nav ul li:hover {
   background-color: var(--clr-light);
   border-radius: var(--box-radius);
   padding: 1em;
-  margin: 1em;
+  margin: 2em 1em;
+  border: 1px solid red;
+}
+
+.comments__avatar {
+  border: 1px solid blue;
 }
