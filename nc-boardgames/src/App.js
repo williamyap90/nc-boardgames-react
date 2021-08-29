@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-
+import { useState } from "react";
 import Nav from "./components/Nav";
 import Home from "./components/Home";
 import Categories from "./components/Categories";
@@ -10,6 +10,8 @@ import SingleReview from "./components/SingleReview";
 import SingleUser from "./components/SingleUser";
 
 function App() {
+  const [categories, setCategories] = useState([]);
+
   return (
     <BrowserRouter>
       <section className="App">
@@ -19,13 +21,13 @@ function App() {
             <Home />
           </Route>
           <Route exact path="/reviews">
-            <Reviews />
+            <Reviews categories={categories} setCategories={setCategories} />
           </Route>
           <Route exact path="/reviews/:review_id">
             <SingleReview />
           </Route>
           <Route exact path="/categories">
-            <Categories />
+            <Categories categories={categories} setCategories={setCategories} />
           </Route>
           <Route exact path="/categories/:category">
             <Categories />
