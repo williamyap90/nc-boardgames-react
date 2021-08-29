@@ -27,7 +27,7 @@
   --clr-dark: rgb(33, 33, 33);
 
   /* Box styling */
-  --box-radius: 0.5em;
+  --box-radius: 0.3em;
   --box-shadow: rgba(171, 171, 171, 0.16) 0px 1px 4px,
     rgb(150, 150, 150) 0px 0px 0px 2px;
 }
@@ -123,7 +123,6 @@ nav ul li:hover {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1;
-    /* border-bottom: 1px solid var(--clr-dark); */
   }
   .header__logo {
     grid-column: 1;
@@ -181,6 +180,7 @@ nav ul li:hover {
     grid-template-rows: 1fr 1fr 1fr;
     list-style: none;
     border: 1px solid var(--box-dark);
+    border-radius: var(--box-radius);
     margin: 1em;
     background-color: var(--box-light);
     width: 90%;
@@ -200,10 +200,37 @@ nav ul li:hover {
   /* Reviews cards */
   .reviews__title {
     grid-area: title;
-    font-size: 1.3em;
+    font-size: 1.15em;
     align-self: center;
     justify-self: center;
-    /* padding: 0.5em; */
+    padding: 0.5em 1em;
+  }
+
+  .reviews__content-body {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  .reviews__container {
+    flex: 3.5;
+  }
+  /* Filters */
+  .filters__container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-top: 2em;
+    border-right: 1px solid var(--box-light);
+  }
+
+  .filters__container > label {
+    padding: 1em;
+    margin-left: 1em;
+    text-align: left;
+  }
+  .filters__container > select {
+    padding: 0.75em;
+    margin: 0 1em;
   }
 }
 .reviews__details {
@@ -266,6 +293,7 @@ nav ul li:hover {
     grid-template-rows: 1fr 1fr 1fr;
     list-style: none;
     border: 1px solid var(--box-dark);
+    border-radius: var(--box-radius);
     margin: 1em;
     background-color: var(--box-light);
     width: 90%;
@@ -298,7 +326,7 @@ nav ul li:hover {
 }
 
 .single_review__item {
-  /* border-radius: var(--box-radius); */
+  border-radius: var(--box-radius);
   border: 1px solid var(--box-dark);
   padding: 2em;
   margin: 1em;
@@ -345,11 +373,11 @@ nav ul li:hover {
 
   border-radius: var(--box-radius);
   border: 1px solid var(--box-dark);
-  padding: 1em;
+  padding: em;
   margin: 1em;
   background-color: var(--box-light);
   width: 400px;
-  height: 200px;
+  height: 250px;
   font-size: 0.9rem;
 }
 .category__item:hover {
@@ -362,7 +390,8 @@ nav ul li:hover {
 }
 .category__container li p {
   padding: 0.25em;
-  margin: 0 2em;
+  margin: 0.75em 2em;
+  font-size: 1.25em;
   text-align: center;
 }
 
@@ -410,7 +439,7 @@ nav ul li:hover {
   border-radius: var(--box-radius);
   padding: 1em;
   margin: 2em 1em;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 .comments__avatar {
