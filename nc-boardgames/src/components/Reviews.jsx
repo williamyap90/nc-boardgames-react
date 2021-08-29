@@ -22,7 +22,7 @@ const Reviews = () => {
         {reviews.map((review) => {
           return (
             <li className="reviews__item" key={review.review_id}>
-              <Reveal animated="move">
+              <Reveal animated="move down">
                 <Reveal.Content visible className="reviews__item-reveal">
                   <img
                     src={review.review_img_url}
