@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getReviews } from "../Api";
 import { Link } from "react-router-dom";
-import { Button, Icon, Divider, Reveal } from "semantic-ui-react";
+import { Divider, Icon, Button, Label } from "semantic-ui-react";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
@@ -22,33 +22,53 @@ const Reviews = () => {
         {reviews.map((review) => {
           return (
             <li className="reviews__item" key={review.review_id}>
-              <Reveal animated="move down">
-                <Reveal.Content visible className="reviews__item-reveal">
-                  <img
-                    src={review.review_img_url}
-                    alt={review.review_title}
-                    className="reviews__image"
-                  />
-                </Reveal.Content>
-                <Reveal.Content hidden>
-                  <p>{review.review_title}</p>
-                  <p>User: {review.owner}</p>
-                  <p>Category: {review.category}</p>
-                  <p>Created at: {review.created_at}</p>
-                  <p>Comment count: {review.comment_count}</p>
-                  <p>Review ID: {review.review_id}</p>
-                  <p>Votes: {review.votes}</p>
-                  <Link to={`/reviews/${review.review_id}`}>
-                    <Button animated className="reviews__button">
-                      <Button.Content visible>View more</Button.Content>
-                      <Button.Content hidden>
-                        <Icon name="arrow right" />
-                      </Button.Content>
-                    </Button>
-                  </Link>
-                </Reveal.Content>
-              </Reveal>
-              <h3 className="reviews__item-title">{review.title}</h3>
+              <Link
+                to={`/reviews/${review.review_id}`}
+                className="reviews__title"
+              >
+                <h3 className="reviews__title">{review.title}</h3>
+              </Link>
+              <img
+                src={review.review_img_url}
+                alt={review.review_title}
+                className="reviews__image"
+              />
+              <p className="reviews__category">{review.category}</p>
+              <div className="reviews__details">
+                <p className="reviews__owner">By: {review.owner}</p>
+                <p className="reviews__created">{review.created_at}</p>
+              </div>
+              <p className="reviews__id">ID: #{review.review_id}</p>
+
+              <Button
+                as="div"
+                labelPosition="left"
+                className="reviews__comment"
+                id="reviews__comment"
+                size="large"
+                style={{ marginRight: "1em" }}
+              >
+                <Label as="a" basic>
+                  {review.comment_count}
+                </Label>
+                <Button icon>
+                  <Icon name="comment" />
+                </Button>
+              </Button>
+
+              <Icon
+                color="grey"
+                name="caret up"
+                size="huge"
+                className="reviews__upvote"
+              />
+              <p className="reviews__votes">{review.votes} Votes</p>
+              <Icon
+                color="grey"
+                name="caret down"
+                size="huge"
+                className="reviews__downvote"
+              />
             </li>
           );
         })}
