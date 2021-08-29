@@ -1,20 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getCategories } from "../Api";
 import { Link, useParams } from "react-router-dom";
 import { Divider } from "semantic-ui-react";
 
-const Categories = () => {
+const Categories = ({ categories, setCategories }) => {
   const { category } = useParams();
-  const [categories, setCategories] = useState([]);
 
   //retrieved category from params when clicking category card
   //use category params to get reviews with query ?category=strategy
+  //also use for reviews filter by category
 
   useEffect(() => {
     getCategories().then((data) => {
       setCategories(data);
     });
-  }, []);
+  }, [setCategories]);
 
   return (
     <section className="section__body section__body-categories">
