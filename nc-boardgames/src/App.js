@@ -11,26 +11,33 @@ import SingleUser from "./components/SingleUser";
 
 function App() {
   const [categories, setCategories] = useState([]);
+  const [categoryFilter, setCategoryFilter] = useState("");
 
   return (
     <BrowserRouter>
       <section className="App">
-        <Nav />
+        <Nav setCategoryFilter={setCategoryFilter} />
         <Switch>
           <Route exact path="/">
             <Home />
           </Route>
           <Route exact path="/reviews">
-            <Reviews categories={categories} setCategories={setCategories} />
+            <Reviews
+              categories={categories}
+              setCategories={setCategories}
+              categoryFilter={categoryFilter}
+              setCategoryFilter={setCategoryFilter}
+            />
           </Route>
           <Route exact path="/reviews/:review_id">
             <SingleReview />
           </Route>
           <Route exact path="/categories">
-            <Categories categories={categories} setCategories={setCategories} />
-          </Route>
-          <Route exact path="/categories/:category">
-            <Categories />
+            <Categories
+              categories={categories}
+              setCategories={setCategories}
+              setCategoryFilter={setCategoryFilter}
+            />
           </Route>
           <Route exact path="/users">
             <Users />
