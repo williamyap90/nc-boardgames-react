@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getSingleReview, getCommentsByReviewId } from "../Api";
 import { useParams, Link } from "react-router-dom";
-import { Button, Icon, Divider } from "semantic-ui-react";
+import { Button, Icon, Divider, Label } from "semantic-ui-react";
 import displayComment from "./Comments";
 
 const SingleReview = () => {
@@ -20,8 +20,6 @@ const SingleReview = () => {
     getCommentsByReviewId(review_id).then((data) => {
       setComments(data);
     });
-    //create a button in review, onClick execute getComments & show comments
-    //set button true or false to show or hide comments, conditional to display?
   };
 
   return (
@@ -33,22 +31,53 @@ const SingleReview = () => {
       <div className="single_review__container" key={singleReview.review_id}>
         <div className="single_review__item">
           <h3 className="single_review__item-title">{singleReview.title}</h3>
+          <p className="single_review__author">By {singleReview.owner}</p>
           <img
             className="single_review__image"
             src={singleReview.review_img_url}
             alt={singleReview.review_title}
           />
-          <p>Designer: {singleReview.designer}</p>
-          <p>Owner: {singleReview.owner}</p>
-          <p>Category: {singleReview.category}</p>
-          <p>Review: {singleReview.review_body}</p>
-          <p>Created at: {singleReview.created_at}</p>
-          <p>Comment count: {singleReview.comment_count}</p>
-          <p>Review ID: {singleReview.review_id}</p>
-          <p>Votes: {singleReview.votes}</p>
+          <p className="single_review__designer">
+            Designer: {singleReview.designer}
+          </p>
+          <p className="single_review__category">{singleReview.category}</p>
+          <p className="single_review__body">{singleReview.review_body}</p>
+          <p className="single_review__created">{singleReview.created_at}</p>
+          <p className="single_review__id">ID: #{singleReview.review_id}</p>
+
+          <Button
+            as="div"
+            labelPosition="left"
+            className="single_review__comment"
+            id="single_review__comment"
+            size="large"
+            style={{ marginRight: "1em" }}
+          >
+            <Label as="a" basic>
+              {singleReview.comment_count}
+            </Label>
+            <Button icon>
+              <Icon name="comment" />
+            </Button>
+          </Button>
+
+          <Icon
+            color="grey"
+            name="caret up"
+            size="huge"
+            className="single_review__upvote"
+          />
+          <p className="single_review__votes">{singleReview.votes} Votes</p>
+          <Icon
+            color="grey"
+            name="caret down"
+            size="huge"
+            className="single_review__downvote"
+          />
+
           <Button
             animated
-            className="reviews__button"
+            className="reviews__btn-view"
             onClick={() => {
               getComments(singleReview.review_id);
               showComments === true
@@ -56,23 +85,28 @@ const SingleReview = () => {
                 : setShowComments(true);
             }}
           >
-            <Button.Content visible>View comments</Button.Content>
+            <Button.Content visible className="reviews__view">
+              View comments
+            </Button.Content>
             <Button.Content hidden>
               <Icon name="chevron down" />
             </Button.Content>
           </Button>
-          <Link to="/reviews">
-            <Button animated className="reviews__button">
+
+          <Button animated className="reviews__btn-back">
+            <Link to="/reviews">
               <Button.Content visible>Go back</Button.Content>
               <Button.Content hidden>
                 <Icon name="arrow left" />
               </Button.Content>
-            </Button>
-          </Link>
-          {showComments &&
-            comments.map((comment) => {
-              return displayComment(comment);
-            })}
+            </Link>
+          </Button>
+          <div className="reviews__comments-container">
+            {showComments &&
+              comments.map((comment) => {
+                return displayComment(comment);
+              })}
+          </div>
         </div>
       </div>
     </section>
