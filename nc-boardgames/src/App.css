@@ -322,6 +322,14 @@ nav ul li:hover {
     align-self: center;
   }
 }
+.reviews__pagination {
+  padding-top: 1em;
+  padding-bottom: 3em;
+}
+.reviews__button,
+.users__button {
+  padding: 1em;
+}
 
 /* Single Review */
 .single_review__container {
@@ -330,25 +338,87 @@ nav ul li:hover {
   align-items: center;
   justify-content: center;
 }
+@media screen and (max-width: 800px) {
+  .single_review__item {
+    border-radius: var(--box-radius);
+    border: 1px solid var(--box-dark);
+    padding: 2em;
+    margin: 1em;
+    background-color: var(--box-light);
+    width: 90%;
+  }
+}
 
-.single_review__item {
-  border-radius: var(--box-radius);
-  border: 1px solid var(--box-dark);
-  padding: 2em;
-  margin: 1em;
-  background-color: var(--box-light);
-  width: 90%;
+@media screen and (min-width: 800px) {
+  .single_review__item {
+    border-radius: var(--box-radius);
+    border: 1px solid var(--box-dark);
+    padding: 2em;
+    margin: 1em;
+    background-color: var(--box-light);
+    width: 90%;
+    display: grid;
+    grid-template-areas:
+      "upvote title category"
+      "vote author id"
+      "downvote date ."
+      "img img img"
+      "designer designer ."
+      "body body body"
+      "goback viewcomments comment"
+      "newcomment newcomment post"
+      ". sortby ."
+      "comments comments comments";
+  }
+}
+.single_review__item-title {
+  grid-area: title;
+}
+.single_review__upvote {
+  grid-area: upvote;
+}
+.single_review__votes {
+  grid-area: vote;
+}
+.single_review__downvote {
+  grid-area: downvote;
+}
+.single_review__author {
+  grid-area: author;
+}
+.single_review__id {
+  grid-area: id;
+}
+.single_review__created {
+  grid-area: date;
+}
+.single_review__designer {
+  grid-area: designer;
+}
+.single_review__comment {
+  grid-area: comment;
+}
+.single_review__body {
+  grid-area: body;
+}
+.reviews__btn-back {
+  grid-area: goback;
+}
+.reviews__btn-view {
+  grid-area: viewcomments;
+}
+.reviews__comments-container {
+  grid-area: comments;
+  display: flex;
+  flex-direction: column;
+  min-width: 80%;
 }
 
 .single_review__image {
+  grid-area: img;
   max-width: 90%;
   height: auto;
   object-fit: cover;
-}
-
-.reviews__button,
-.users__button {
-  padding: 1em;
 }
 
 .single_review__container p {
@@ -357,10 +427,6 @@ nav ul li:hover {
   text-align: left;
 }
 
-.reviews__pagination {
-  padding-top: 1em;
-  padding-bottom: 3em;
-}
 /* Categories */
 .category__container {
   margin-top: 2em;
