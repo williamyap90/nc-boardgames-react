@@ -338,71 +338,69 @@ nav ul li:hover {
   align-items: center;
   justify-content: center;
 }
-@media screen and (max-width: 800px) {
-  .single_review__item {
-    border-radius: var(--box-radius);
-    border: 1px solid var(--box-dark);
-    padding: 2em;
-    margin: 1em;
-    background-color: var(--box-light);
-    width: 90%;
-  }
+
+.single_review__item {
+  border-radius: var(--box-radius);
+  border: 1px solid var(--box-dark);
+  padding: 2em;
+  margin: 1em;
+  background-color: var(--box-light);
+  width: 90%;
+  display: grid;
+  grid-template-areas:
+    "upvote title category"
+    "vote title . "
+    "downvote authordate id"
+    "img img img"
+    "designer designer ."
+    "body body body"
+    "buttons buttons buttons"
+    "newcomment newcomment post"
+    ". sortby ."
+    "comments comments comments";
+  grid-template-columns: 1fr 3.5fr 1fr;
 }
 
-@media screen and (min-width: 800px) {
-  .single_review__item {
-    border-radius: var(--box-radius);
-    border: 1px solid var(--box-dark);
-    padding: 2em;
-    margin: 1em;
-    background-color: var(--box-light);
-    width: 90%;
-    display: grid;
-    grid-template-areas:
-      "upvote title category"
-      "vote author id"
-      "downvote date ."
-      "img img img"
-      "designer designer ."
-      "body body body"
-      "goback viewcomments comment"
-      "newcomment newcomment post"
-      ". sortby ."
-      "comments comments comments";
-  }
-}
 .single_review__item-title {
   grid-area: title;
+  font-size: 1.5em;
+  align-self: center;
+  place-self: center;
+}
+.single_review__category {
+  grid-area: category;
+  text-transform: capitalize;
+  justify-self: end;
 }
 .single_review__upvote {
   grid-area: upvote;
+  place-self: center;
 }
 .single_review__votes {
   grid-area: vote;
+  place-self: center;
 }
 .single_review__downvote {
   grid-area: downvote;
-}
-.single_review__author {
-  grid-area: author;
+  place-self: center;
 }
 .single_review__id {
   grid-area: id;
+  justify-self: end;
+}
+.single_review__authordate {
+  grid-area: authordate;
 }
 .single_review__created {
-  grid-area: date;
+  color: rgb(150, 150, 150);
 }
 .single_review__designer {
   grid-area: designer;
-}
-.single_review__comment {
-  grid-area: comment;
+  font-size: 1.2em;
 }
 .single_review__body {
   grid-area: body;
-}
-.reviews__btn-back {
-  grid-area: goback;
+  font-size: 1.2em;
 }
 .reviews__btn-view {
   grid-area: viewcomments;
@@ -413,18 +411,38 @@ nav ul li:hover {
   flex-direction: column;
   min-width: 80%;
 }
-
 .single_review__image {
   grid-area: img;
   max-width: 90%;
+  margin: 0 auto;
   height: auto;
   object-fit: cover;
 }
-
+.single_review__btn-container {
+  grid-area: buttons;
+  margin-bottom: 1em;
+}
 .single_review__container p {
   padding: 0.25em;
   margin: 0 2em;
   text-align: left;
+}
+.single_review__item > img {
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
+.single_review__item > .single_review__designer {
+  padding-left: 1em;
+}
+.single_review__item > .single_review__body {
+  margin-top: 0em;
+  margin-bottom: 1em;
+  padding: 1em;
+}
+.single_review__item > .single_review__comment {
+  margin-top: 0em;
+  margin-left: 2em;
+  padding: 1em;
 }
 
 /* Categories */
@@ -509,11 +527,45 @@ nav ul li:hover {
 .comments__container {
   background-color: var(--clr-light);
   border-radius: var(--box-radius);
-  padding: 1em;
-  margin: 2em 1em;
-  /* border: 1px solid red; */
+  padding: 1.5em 0.5em;
+  margin: 0.5em 1em;
+  margin-top: 1em;
+  display: grid;
+  grid-template-areas:
+    "upvote date author"
+    "votes body body"
+    "downvote body body";
+  grid-template-columns: 1fr 3.5fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  height: 100%;
 }
-
-.comments__avatar {
-  border: 1px solid blue;
+.comments__author {
+  grid-area: author;
+  font-size: 1.15em;
+  font-weight: 700;
+  justify-self: end;
+}
+.comments__created {
+  grid-area: date;
+  font-size: 1.15em;
+  color: rgb(150, 150, 150);
+}
+.comments__body {
+  grid-area: body;
+  font-size: 1.1em;
+  word-wrap: break-word;
+}
+.comments__upvote {
+  grid-area: upvote;
+  place-self: center;
+}
+.comments__votes {
+  grid-area: votes;
+  font-size: 1em;
+  place-self: center;
+  text-align: center;
+}
+.comments__downvote {
+  grid-area: downvote;
+  place-self: center;
 }
