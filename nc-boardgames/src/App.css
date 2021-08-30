@@ -586,3 +586,11 @@ nav ul li:hover {
   grid-area: downvote;
   place-self: center;
 }
+.reviews__downvote,
+.reviews__upvote,
+.single_review__upvote,
+.single_review__downvote,
+.comments__upvote,
+.comments__downvote {
+  cursor: pointer;
+}
