@@ -1,15 +1,9 @@
 import { useEffect } from "react";
 import { getCategories } from "../Api";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Divider } from "semantic-ui-react";
 
-const Categories = ({ categories, setCategories }) => {
-  const { category } = useParams();
-
-  //retrieved category from params when clicking category card
-  //use category params to get reviews with query ?category=strategy
-  //also use for reviews filter by category
-
+const Categories = ({ categories, setCategories, setCategoryFilter }) => {
   useEffect(() => {
     getCategories().then((data) => {
       setCategories(data);
@@ -25,12 +19,18 @@ const Categories = ({ categories, setCategories }) => {
       <ul className="category__container">
         {categories.map((category) => {
           return (
-            <Link to={`/categories/${category.slug}`}>
-              <li className="category__item" key={category.slug}>
+            <li
+              className="category__item"
+              key={category.slug}
+              onClick={() => {
+                setCategoryFilter(category.slug);
+              }}
+            >
+              <Link to={`/reviews?category=${category.slug}`}>
                 <h3 className="category__item-title"> {category.slug}</h3>
                 <p>{category.description}</p>
-              </li>
-            </Link>
+              </Link>
+            </li>
           );
         })}
       </ul>
