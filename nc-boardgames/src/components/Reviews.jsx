@@ -39,7 +39,7 @@ const Reviews = ({ categories, setCategories }) => {
                 />
                 <p className="reviews__category">{review.category}</p>
                 <div className="reviews__details">
-                  <p className="reviews__owner">By: {review.owner}</p>
+                  <p className="reviews__owner">By {review.owner}</p>
                   <p className="reviews__created">{review.created_at}</p>
                 </div>
                 <p className="reviews__id">ID: #{review.review_id}</p>
