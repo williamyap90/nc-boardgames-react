@@ -161,7 +161,6 @@ nav ul li:hover {
 }
 
 .reviews__container {
-  margin-top: 2em;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -184,13 +183,13 @@ nav ul li:hover {
     margin: 1em;
     background-color: var(--box-light);
     width: 90%;
-    height: 210px;
+    height: 180px;
     font-size: 1.15em;
   }
   .reviews__image {
     grid-area: img;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     object-fit: cover;
     justify-self: center;
     align-self: center;
@@ -208,29 +207,36 @@ nav ul li:hover {
 
   .reviews__content-body {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
   }
-  .reviews__container {
-    flex: 3.5;
-  }
+
   /* Filters */
   .filters__container {
     display: flex;
     flex-direction: column;
-    flex: 1;
-    margin-top: 2em;
-    border-right: 1px solid var(--box-light);
   }
-
-  .filters__container > label {
+  .filters__header {
+    padding: 1em;
+  }
+  .filters__main > label {
     padding: 1em;
     margin-left: 1em;
     text-align: left;
   }
-  .filters__container > select {
-    padding: 0.75em;
-    margin: 0 1em;
+  .filters__main > select {
+    width: 150px;
+    height: 25px;
+  }
+  #limit {
+    width: 40px;
+  }
+  .filters__separator {
+    align-self: center;
+    width: 90%;
+    margin-top: 3em;
+    margin-bottom: 1em;
+    border-bottom: 1px solid var(--box-dark);
   }
 }
 .reviews__details {
