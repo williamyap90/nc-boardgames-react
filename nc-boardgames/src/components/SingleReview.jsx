@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getSingleReview, getCommentsByReviewId } from "../Api";
+import { changeVotes } from "../utils/utils";
 import { useParams, Link } from "react-router-dom";
 import { Button, Icon, Divider, Label } from "semantic-ui-react";
 import displayComment from "./Comments";
@@ -14,7 +15,7 @@ const SingleReview = () => {
     getSingleReview(review_id).then((data) => {
       setSingleReview(data);
     });
-  }, [review_id, showComments]);
+  }, [review_id, showComments, singleReview, comments]);
 
   const getComments = (review_id) => {
     getCommentsByReviewId(review_id).then((data) => {
@@ -47,20 +48,23 @@ const SingleReview = () => {
             <p className="single_review__created">{singleReview.created_at}</p>
           </div>
 
-          <Icon
-            color="grey"
-            name="caret up"
-            size="huge"
+          <div
             className="single_review__upvote"
-          />
+            onClick={() => {
+              changeVotes(1, singleReview.review_id);
+            }}
+          >
+            <Icon color="grey" name="caret up" size="huge" />
+          </div>
           <p className="single_review__votes">{singleReview.votes} Votes</p>
-          <Icon
-            color="grey"
-            name="caret down"
-            size="huge"
+          <div
             className="single_review__downvote"
-          />
-
+            onClick={() => {
+              changeVotes(-1, singleReview.review_id);
+            }}
+          >
+            <Icon color="grey" name="caret down" size="huge" />
+          </div>
           <div className="single_review__btn-container">
             <Button animated className="reviews__btn-back">
               <Link to="/reviews">

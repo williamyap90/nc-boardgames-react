@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getReviews } from "../Api";
+import { changeVotes } from "../utils/utils";
 import { Link } from "react-router-dom";
 import { Divider, Icon, Button, Label } from "semantic-ui-react";
 import Filters from "./Filters";
@@ -11,7 +12,7 @@ const Reviews = ({ categories, setCategories, filters, setFilters }) => {
     getReviews(filters).then((data) => {
       setReviews(data);
     });
-  }, [filters]);
+  }, [filters, reviews]);
 
   return (
     <section className="section__body section__body-reviews">
@@ -65,19 +66,23 @@ const Reviews = ({ categories, setCategories, filters, setFilters }) => {
                   </Button>
                 </Button>
 
-                <Icon
-                  color="grey"
-                  name="caret up"
-                  size="huge"
+                <div
                   className="reviews__upvote"
-                />
+                  onClick={() => {
+                    changeVotes(1, review.review_id);
+                  }}
+                >
+                  <Icon color="grey" name="caret up" size="huge" />
+                </div>
                 <p className="reviews__votes">{review.votes} Votes</p>
-                <Icon
-                  color="grey"
-                  name="caret down"
-                  size="huge"
+                <div
                   className="reviews__downvote"
-                />
+                  onClick={() => {
+                    changeVotes(-1, review.review_id);
+                  }}
+                >
+                  <Icon color="grey" name="caret down" size="huge" />
+                </div>
               </li>
             );
           })}

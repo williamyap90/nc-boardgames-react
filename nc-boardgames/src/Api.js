@@ -10,7 +10,7 @@ export const getCategories = async () => {
 };
 
 export const getReviews = async (filters) => {
-  let filtersArray = [];
+  const filtersArray = [];
   for (let filter in filters) {
     if (filters[filter]) filtersArray.push(`${filter}=${filters[filter]}`);
   }
@@ -19,6 +19,7 @@ export const getReviews = async (filters) => {
   const { data } = await api.get(`/reviews${filtersString}`);
   return data.result.reviews;
 };
+
 export const getSingleReview = async (review_id) => {
   const { data } = await api.get(`/reviews/${review_id}`);
   return data.review[0];
@@ -37,4 +38,26 @@ export const getUsers = async () => {
 export const getSingleUser = async (username) => {
   const { data } = await api.get(`/users/${username}`);
   return data.user[0];
+};
+
+export const patchVotes = async (vote, id) => {
+  try {
+    const res = await api.patch(`/reviews/${id}`, {
+      inc_votes: vote,
+    });
+    return res.data.review;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const patchCommentVotes = async (vote, id) => {
+  try {
+    const res = await api.patch(`/comments/${id}`, {
+      inc_votes: vote,
+    });
+    return res.data.comment;
+  } catch (err) {
+    console.log(err);
+  }
 };
