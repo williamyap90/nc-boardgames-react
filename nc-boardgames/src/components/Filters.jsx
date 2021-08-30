@@ -1,7 +1,12 @@
 import { useEffect } from "react";
 import { getCategories } from "../Api";
 
-const Filters = ({ categories, setCategories }) => {
+const Filters = ({
+  categories,
+  setCategories,
+  categoryFilter,
+  setCategoryFilter,
+}) => {
   useEffect(() => {
     getCategories().then((data) => {
       setCategories(data);
@@ -13,8 +18,22 @@ const Filters = ({ categories, setCategories }) => {
       <div className="filters__header">Filters:</div>
       <div className="filters__main">
         <label htmlFor="category">Category:</label>
-        <select name="category" id="category">
-          <option value="">Select a category</option>
+        <select
+          name="category"
+          id="category"
+          value={categoryFilter}
+          onChange={(event) => {
+            setCategoryFilter(event.target.value);
+          }}
+        >
+          <option
+            value=""
+            onClick={(event) => {
+              setCategoryFilter("");
+            }}
+          >
+            Select a category
+          </option>
           {categories.map((category) => {
             return (
               <option
@@ -29,7 +48,13 @@ const Filters = ({ categories, setCategories }) => {
         </select>
 
         <label htmlFor="sort_by">Sort by:</label>
-        <select name="sort_by" id="sort_by">
+        <select
+          name="sort_by"
+          id="sort_by"
+          onClick={(event) => {
+            console.log(event.target.value);
+          }}
+        >
           <option value="">Select sort by</option>
           <option value="review">Review ID</option>
           <option value="title">Title</option>
