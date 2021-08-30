@@ -3,7 +3,7 @@ import { getCategories } from "../Api";
 import { Link } from "react-router-dom";
 import { Divider } from "semantic-ui-react";
 
-const Categories = ({ categories, setCategories, setCategoryFilter }) => {
+const Categories = ({ categories, setCategories, setFilters }) => {
   useEffect(() => {
     getCategories().then((data) => {
       setCategories(data);
@@ -23,7 +23,11 @@ const Categories = ({ categories, setCategories, setCategoryFilter }) => {
               className="category__item"
               key={category.slug}
               onClick={() => {
-                setCategoryFilter(category.slug);
+                setFilters((currFilters) => {
+                  const newFilters = { ...currFilters };
+                  newFilters.category = category.slug;
+                  return newFilters;
+                });
               }}
             >
               <Link to={`/reviews?category=${category.slug}`}>

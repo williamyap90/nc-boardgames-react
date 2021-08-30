@@ -1,17 +1,28 @@
 import { useEffect } from "react";
 import { getCategories } from "../Api";
 
-const Filters = ({
-  categories,
-  setCategories,
-  categoryFilter,
-  setCategoryFilter,
-}) => {
+const Filters = ({ categories, setCategories, filters, setFilters }) => {
   useEffect(() => {
     getCategories().then((data) => {
       setCategories(data);
     });
   }, [setCategories]);
+
+  const updateFiltersObj = (event, labelName) => {
+    setFilters((currFilters) => {
+      const newFilters = { ...currFilters };
+      newFilters[labelName] = event.target.value;
+      return newFilters;
+    });
+  };
+
+  const defaultFilters = {
+    category: null,
+    sort_by: null,
+    order: null,
+    p: 1,
+    limit: 10,
+  };
 
   return (
     <section className="filters__container">
@@ -21,15 +32,15 @@ const Filters = ({
         <select
           name="category"
           id="category"
-          value={categoryFilter}
+          value={filters.category || ""}
           onChange={(event) => {
-            setCategoryFilter(event.target.value);
+            updateFiltersObj(event, "category");
           }}
         >
           <option
             value=""
             onClick={(event) => {
-              setCategoryFilter("");
+              setFilters(defaultFilters);
             }}
           >
             Select a category
@@ -51,26 +62,38 @@ const Filters = ({
         <select
           name="sort_by"
           id="sort_by"
-          onClick={(event) => {
-            console.log(event.target.value);
+          onChange={(event) => {
+            updateFiltersObj(event, "sort_by");
           }}
         >
           <option value="">Select sort by</option>
-          <option value="review">Review ID</option>
+          <option value="review_id">Review ID</option>
           <option value="title">Title</option>
           <option value="votes">Votes</option>
           <option value="created_at">Created at</option>
         </select>
 
         <label htmlFor="order">Order:</label>
-        <select name="order" id="order">
+        <select
+          name="order"
+          id="order"
+          onChange={(event) => {
+            updateFiltersObj(event, "order");
+          }}
+        >
           <option value="">Select order</option>
           <option value="asc">Ascending</option>
           <option value="desc">Descending</option>
         </select>
 
         <label htmlFor="limit">Results per page: </label>
-        <select name="limit" id="limit">
+        <select
+          name="limit"
+          id="limit"
+          onChange={(event) => {
+            updateFiltersObj(event, "limit");
+          }}
+        >
           <option value="">#</option>
           <option value="5">5</option>
           <option value="10">10</option>

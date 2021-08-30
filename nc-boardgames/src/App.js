@@ -11,12 +11,18 @@ import SingleUser from "./components/SingleUser";
 
 function App() {
   const [categories, setCategories] = useState([]);
-  const [categoryFilter, setCategoryFilter] = useState("");
+  const [filters, setFilters] = useState({
+    category: null,
+    sort_by: null,
+    order: null,
+    p: 1,
+    limit: 10,
+  });
 
   return (
     <BrowserRouter>
       <section className="App">
-        <Nav setCategoryFilter={setCategoryFilter} />
+        <Nav setFilters={setFilters} />
         <Switch>
           <Route exact path="/">
             <Home />
@@ -25,8 +31,8 @@ function App() {
             <Reviews
               categories={categories}
               setCategories={setCategories}
-              categoryFilter={categoryFilter}
-              setCategoryFilter={setCategoryFilter}
+              filters={filters}
+              setFilters={setFilters}
             />
           </Route>
           <Route exact path="/reviews/:review_id">
@@ -36,7 +42,7 @@ function App() {
             <Categories
               categories={categories}
               setCategories={setCategories}
-              setCategoryFilter={setCategoryFilter}
+              setFilters={setFilters}
             />
           </Route>
           <Route exact path="/users">

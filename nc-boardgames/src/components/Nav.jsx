@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../images/ncbg_logo.png";
 
-const Nav = ({ setCategoryFilter }) => {
+const Nav = ({ setFilters }) => {
   return (
     <section>
       <div className="site__header-bar"></div>
@@ -15,7 +15,13 @@ const Nav = ({ setCategoryFilter }) => {
               <li
                 className="nav__item-text"
                 onClick={() => {
-                  setCategoryFilter("");
+                  setFilters({
+                    category: null,
+                    sort_by: null,
+                    order: null,
+                    p: 1,
+                    limit: 10,
+                  });
                 }}
               >
                 Reviews

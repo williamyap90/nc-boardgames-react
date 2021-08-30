@@ -4,19 +4,14 @@ import { Link } from "react-router-dom";
 import { Divider, Icon, Button, Label } from "semantic-ui-react";
 import Filters from "./Filters";
 
-const Reviews = ({
-  categories,
-  setCategories,
-  categoryFilter,
-  setCategoryFilter,
-}) => {
+const Reviews = ({ categories, setCategories, filters, setFilters }) => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    getReviews(categoryFilter).then((data) => {
+    getReviews(filters).then((data) => {
       setReviews(data);
     });
-  }, [categoryFilter]);
+  }, [filters]);
 
   return (
     <section className="section__body section__body-reviews">
@@ -28,8 +23,8 @@ const Reviews = ({
         <Filters
           categories={categories}
           setCategories={setCategories}
-          categoryFilter={categoryFilter}
-          setCategoryFilter={setCategoryFilter}
+          filters={filters}
+          setFilters={setFilters}
         />
 
         <ul className="reviews__container">
