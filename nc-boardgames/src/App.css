@@ -421,7 +421,10 @@ nav ul li:hover {
 .single_review__btn-container {
   grid-area: buttons;
   margin-bottom: 1em;
+  display: Flex;
+  justify-content: space-evenly;
 }
+
 .single_review__container p {
   padding: 0.25em;
   margin: 0 2em;
