@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "../images/ncbg_logo.png";
 
-const Nav = () => {
+const Nav = ({ setCategoryFilter }) => {
   return (
     <section>
       <div className="site__header-bar"></div>
@@ -12,7 +12,14 @@ const Nav = () => {
         <nav className="nav__bar">
           <ul>
             <Link to="/reviews" className="nav__item">
-              <li className="nav__item-text">Reviews</li>
+              <li
+                className="nav__item-text"
+                onClick={() => {
+                  setCategoryFilter("");
+                }}
+              >
+                Reviews
+              </li>
             </Link>
             <Link to="/categories" className="nav__item">
               <li className="nav__item-text">Categories</li>
