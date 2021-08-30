@@ -149,6 +149,10 @@ nav ul li:hover {
     padding: 0.5em;
     color: rgb(150, 150, 150);
   }
+  #page__divider:after,
+  #page__divider:before {
+    position: static;
+  }
 }
 
 /* Reviews */
@@ -320,6 +324,16 @@ nav ul li:hover {
   .reviews__category {
     justify-self: center;
     align-self: center;
+  }
+  .filters__container {
+    display: flex;
+    flex-direction: column;
+  }
+  .filters__header {
+    padding: 0.5em;
+  }
+  .filters__main > label {
+    padding: 0.5em;
   }
 }
 .reviews__pagination {
