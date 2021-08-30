@@ -31,7 +31,6 @@ const SingleReview = () => {
       <div className="single_review__container" key={singleReview.review_id}>
         <div className="single_review__item">
           <h3 className="single_review__item-title">{singleReview.title}</h3>
-          <p className="single_review__author">By {singleReview.owner}</p>
           <img
             className="single_review__image"
             src={singleReview.review_img_url}
@@ -42,24 +41,11 @@ const SingleReview = () => {
           </p>
           <p className="single_review__category">{singleReview.category}</p>
           <p className="single_review__body">{singleReview.review_body}</p>
-          <p className="single_review__created">{singleReview.created_at}</p>
           <p className="single_review__id">ID: #{singleReview.review_id}</p>
-
-          <Button
-            as="div"
-            labelPosition="left"
-            className="single_review__comment"
-            id="single_review__comment"
-            size="large"
-            style={{ marginRight: "1em" }}
-          >
-            <Label as="a" basic>
-              {singleReview.comment_count}
-            </Label>
-            <Button icon>
-              <Icon name="comment" />
-            </Button>
-          </Button>
+          <div className="single_review__authordate">
+            <p className="single_review__author">By {singleReview.owner}</p>
+            <p className="single_review__created">{singleReview.created_at}</p>
+          </div>
 
           <Icon
             color="grey"
@@ -75,32 +61,49 @@ const SingleReview = () => {
             className="single_review__downvote"
           />
 
-          <Button
-            animated
-            className="reviews__btn-view"
-            onClick={() => {
-              getComments(singleReview.review_id);
-              showComments === true
-                ? setShowComments(false)
-                : setShowComments(true);
-            }}
-          >
-            <Button.Content visible className="reviews__view">
-              View comments
-            </Button.Content>
-            <Button.Content hidden>
-              <Icon name="chevron down" />
-            </Button.Content>
-          </Button>
-
-          <Button animated className="reviews__btn-back">
-            <Link to="/reviews">
-              <Button.Content visible>Go back</Button.Content>
-              <Button.Content hidden>
-                <Icon name="arrow left" />
+          <div className="single_review__btn-container">
+            <Button animated className="reviews__btn-back">
+              <Link to="/reviews">
+                <Button.Content visible>Go back</Button.Content>
+                <Button.Content hidden>
+                  <Icon name="arrow left" />
+                </Button.Content>
+              </Link>
+            </Button>
+            <Button
+              animated
+              className="reviews__btn-view"
+              onClick={() => {
+                getComments(singleReview.review_id);
+                showComments === true
+                  ? setShowComments(false)
+                  : setShowComments(true);
+              }}
+            >
+              <Button.Content visible className="reviews__view">
+                View comments
               </Button.Content>
-            </Link>
-          </Button>
+              <Button.Content hidden>
+                <Icon name="chevron down" />
+              </Button.Content>
+            </Button>
+            <Button
+              as="div"
+              labelPosition="left"
+              className="single_review__comment"
+              id="single_review__comment"
+              size="large"
+              style={{ color: "red" }}
+            >
+              <Label as="a" basic>
+                {singleReview.comment_count}
+              </Label>
+              <Button icon>
+                <Icon name="comment" />
+              </Button>
+            </Button>
+          </div>
+
           <div className="reviews__comments-container">
             {showComments &&
               comments.map((comment) => {
