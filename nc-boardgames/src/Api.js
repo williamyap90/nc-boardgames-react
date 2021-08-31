@@ -27,6 +27,7 @@ export const getSingleReview = async (review_id) => {
 
 export const getCommentsByReviewId = async (review_id) => {
   const { data } = await api.get(`reviews/${review_id}/comments`);
+  console.log(data.comments);
   return data.comments;
 };
 
@@ -56,6 +57,16 @@ export const patchCommentVotes = async (vote, id) => {
     const res = await api.patch(`/comments/${id}`, {
       inc_votes: vote,
     });
+    return res.data.comment;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const postNewComment = async (commentBody, user, id) => {
+  const newComment = { username: user, body: commentBody };
+  try {
+    const res = await api.post(`/reviews/${id}/comments`, newComment);
     return res.data.comment;
   } catch (err) {
     console.log(err);
