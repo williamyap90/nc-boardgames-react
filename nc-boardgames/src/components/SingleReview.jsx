@@ -22,7 +22,7 @@ const SingleReview = ({ user }) => {
     getSingleReview(review_id).then((data) => {
       setSingleReview(data);
     });
-  }, [review_id, showComments]);
+  }, [review_id]);
 
   return (
     <section className="section__body section__body-review">
