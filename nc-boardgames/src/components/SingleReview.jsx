@@ -57,7 +57,11 @@ const SingleReview = ({ user }) => {
                 newCommentBody,
                 user.username,
                 singleReview.review_id
-              );
+              ).then((res) => {
+                if (res) {
+                  alert("Successfully posted a new comment!");
+                }
+              });
               setNewCommentBody("");
             }}
           >
@@ -69,7 +73,11 @@ const SingleReview = ({ user }) => {
                 setNewCommentBody(event.target.value);
               }}
             />
-            <Button primary style={{ minHeight: 100 }}>
+            <Button
+              primary
+              style={{ minHeight: 100 }}
+              disabled={newCommentBody.length === 0 ? true : false}
+            >
               Post comment
             </Button>
           </Form>
