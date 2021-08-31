@@ -1,27 +1,28 @@
 import { useEffect, useState } from "react";
-import { getSingleReview, getCommentsByReviewId } from "../Api";
-import { changeVotes } from "../utils/utils";
+import { getSingleReview, postNewComment } from "../Api";
 import { useParams, Link } from "react-router-dom";
-import { Button, Icon, Divider, Label } from "semantic-ui-react";
-import displayComment from "./Comments";
+import {
+  Button,
+  Icon,
+  Divider,
+  Label,
+  Form,
+  TextArea,
+} from "semantic-ui-react";
+import Comments from "./Comments";
+import Voter from "./Voter";
 
-const SingleReview = () => {
+const SingleReview = ({ user }) => {
   const { review_id } = useParams();
   const [singleReview, setSingleReview] = useState({});
-  const [comments, setComments] = useState([]);
   const [showComments, setShowComments] = useState(false);
+  const [newCommentBody, setNewCommentBody] = useState("");
 
   useEffect(() => {
     getSingleReview(review_id).then((data) => {
       setSingleReview(data);
     });
-  }, [review_id, showComments, singleReview, comments]);
-
-  const getComments = (review_id) => {
-    getCommentsByReviewId(review_id).then((data) => {
-      setComments(data);
-    });
-  };
+  }, [review_id, showComments]);
 
   return (
     <section className="section__body section__body-review">
@@ -48,23 +49,36 @@ const SingleReview = () => {
             <p className="single_review__created">{singleReview.created_at}</p>
           </div>
 
-          <div
-            className="single_review__upvote"
-            onClick={() => {
-              changeVotes(1, singleReview.review_id);
+          <Form
+            className="single_review__textarea"
+            onSubmit={(event) => {
+              event.preventDefault();
+              postNewComment(
+                newCommentBody,
+                user.username,
+                singleReview.review_id
+              );
+              setNewCommentBody("");
             }}
           >
-            <Icon color="grey" name="caret up" size="huge" />
-          </div>
-          <p className="single_review__votes">{singleReview.votes} Votes</p>
-          <div
-            className="single_review__downvote"
-            onClick={() => {
-              changeVotes(-1, singleReview.review_id);
-            }}
-          >
-            <Icon color="grey" name="caret down" size="huge" />
-          </div>
+            <TextArea
+              placeholder="Leave a comment here"
+              style={{ minHeight: 100 }}
+              value={newCommentBody}
+              onChange={(event) => {
+                setNewCommentBody(event.target.value);
+              }}
+            />
+            <Button primary style={{ minHeight: 100 }}>
+              Post comment
+            </Button>
+          </Form>
+
+          <Voter
+            review_id={singleReview.review_id}
+            votes={singleReview.votes}
+          />
+
           <div className="single_review__btn-container">
             <Button animated className="reviews__btn-back">
               <Link to="/reviews">
@@ -78,10 +92,8 @@ const SingleReview = () => {
               animated
               className="reviews__btn-view"
               onClick={() => {
-                getComments(singleReview.review_id);
-                showComments === true
-                  ? setShowComments(false)
-                  : setShowComments(true);
+                // getComments(singleReview.review_id);
+                setShowComments((currVal) => !currVal);
               }}
             >
               <Button.Content visible className="reviews__view">
@@ -97,7 +109,6 @@ const SingleReview = () => {
               className="single_review__comment"
               id="single_review__comment"
               size="large"
-              style={{ color: "red" }}
             >
               <Label as="a" basic>
                 {singleReview.comment_count}
@@ -109,10 +120,9 @@ const SingleReview = () => {
           </div>
 
           <div className="reviews__comments-container">
-            {showComments &&
-              comments.map((comment) => {
-                return displayComment(comment);
-              })}
+            {showComments ? (
+              <Comments review_id={singleReview.review_id} />
+            ) : null}
           </div>
         </div>
       </div>
