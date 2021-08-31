@@ -72,6 +72,27 @@ h3 {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
 }
+@media screen and (min-width: 800px) {
+  .nav__main-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr;
+    grid-template-areas:
+      ". users"
+      ". nav";
+  }
+  .nav__bar {
+    grid-area: nav;
+    /* border: 1px solid green; */
+  }
+  .nav__users {
+    grid-area: users;
+    display: flex;
+    align-self: flex-end;
+    flex-direction: row;
+    /* border: 1px solid blue; */
+  }
+}
 .nav__footer {
   padding: 0.2em;
 }
@@ -97,12 +118,9 @@ nav ul li {
 nav ul li:hover {
   color: var(--clr-accent);
 }
-/*  */
 .nav__item-text {
   position: relative;
 }
-
-/*  */
 
 @media screen and (min-width: 1200px) {
   html {
