@@ -4,16 +4,6 @@ import { useState, useEffect } from "react";
 
 const Comments = ({ review_id }) => {
   const [comments, setComments] = useState([]);
-  const [voteChange, setVoteChange] = useState(0);
-
-  //REDO GET COMMENTS
-  console.log(review_id, "review_id");
-
-  // const getComments = (review_id) => {
-  //   getCommentsByReviewId(review_id).then((data) => {
-  //     setComments(data);
-  //   });
-  // };
 
   useEffect(() => {
     getCommentsByReviewId(review_id).then((data) => {
@@ -21,11 +11,19 @@ const Comments = ({ review_id }) => {
     });
   }, []);
 
-  const changeCommentVotes = (num, review_id) => {
-    patchCommentVotes(num, review_id).then((updatedComment) => {
-      console.log(updatedComment);
-      //setVoteChange
+  const changeCommentVotes = (num, comment_id) => {
+    setComments((currentComments) => {
+      const newComments = currentComments.map((comment) => {
+        return (comment = { ...comment });
+      });
+      newComments.forEach((comment) => {
+        if (comment.comment_id === comment_id) {
+          comment.votes = comment.votes + num;
+        }
+      });
+      return newComments;
     });
+    patchCommentVotes(num, review_id);
   };
 
   return (
