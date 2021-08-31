@@ -12,7 +12,7 @@ const Reviews = ({ categories, setCategories, filters, setFilters }) => {
     getReviews(filters).then((data) => {
       setReviews(data);
     });
-  }, [filters, reviews]);
+  }, [filters]);
 
   return (
     <section className="section__body section__body-reviews">
