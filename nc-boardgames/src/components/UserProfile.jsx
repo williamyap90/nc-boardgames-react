@@ -2,7 +2,7 @@ import { Button } from "semantic-ui-react";
 
 const UserProfile = ({ user, setUser }) => {
   return (
-    <div>
+    <div className="nav__users">
       {user.username ? (
         <h3>
           Welcome back, {user.username}!
