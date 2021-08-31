@@ -18,11 +18,14 @@ function App() {
     p: 1,
     limit: 10,
   });
+  const [user, setUser] = useState({
+    username: "cooljmessy",
+  });
 
   return (
     <BrowserRouter>
       <section className="App">
-        <Nav setFilters={setFilters} />
+        <Nav setFilters={setFilters} user={user} setUser={setUser} />
         <Switch>
           <Route exact path="/">
             <Home />
