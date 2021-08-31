@@ -368,8 +368,8 @@ nav ul li:hover {
     "img img img"
     "designer designer ."
     "body body body"
+    "newcomment newcomment newcomment"
     "buttons buttons buttons"
-    "newcomment newcomment post"
     ". sortby ."
     "comments comments comments";
   grid-template-columns: 1fr 3.5fr 1fr;
@@ -437,6 +437,14 @@ nav ul li:hover {
   margin-bottom: 1em;
   display: Flex;
   justify-content: space-evenly;
+}
+.single_review__textarea {
+  grid-area: newcomment;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  padding: 0 2em;
+  margin-bottom: 2em;
 }
 
 .single_review__container p {
