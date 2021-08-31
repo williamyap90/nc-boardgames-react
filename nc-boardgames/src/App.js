@@ -39,7 +39,7 @@ function App() {
             />
           </Route>
           <Route exact path="/reviews/:review_id">
-            <SingleReview />
+            <SingleReview user={user} />
           </Route>
           <Route exact path="/categories">
             <Categories
