@@ -37,6 +37,10 @@ const SingleReview = ({ user, isLoading, setIsLoading }) => {
           newComments.unshift(res[0]);
           return newComments;
         });
+      } else {
+        alert(
+          "Sorry, you can't leave a comment as a guest - please login first."
+        );
       }
     });
     setNewCommentBody("");
