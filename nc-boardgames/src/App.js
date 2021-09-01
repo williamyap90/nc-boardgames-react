@@ -22,6 +22,7 @@ function App() {
   const [user, setUser] = useState({
     username: "cooljmessy",
   });
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <BrowserRouter>
@@ -39,6 +40,8 @@ function App() {
               setFilters={setFilters}
               reviews={reviews}
               setReviews={setReviews}
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
             />
           </Route>
           <Route exact path="/reviews/:review_id">
@@ -46,6 +49,8 @@ function App() {
               user={user}
               reviews={reviews}
               setReviews={setReviews}
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
             />
           </Route>
           <Route exact path="/categories">
@@ -53,13 +58,15 @@ function App() {
               categories={categories}
               setCategories={setCategories}
               setFilters={setFilters}
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
             />
           </Route>
           <Route exact path="/users">
-            <Users />
+            <Users isLoading={isLoading} setIsLoading={setIsLoading} />
           </Route>
           <Route exact path="/users/:username">
-            <SingleUser />
+            <SingleUser isLoading={isLoading} setIsLoading={setIsLoading} />
           </Route>
         </Switch>
       </section>

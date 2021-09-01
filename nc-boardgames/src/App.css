@@ -620,3 +620,27 @@ nav ul li:hover {
 .comments__downvote {
   cursor: pointer;
 }
+
+/* Loader */
+.loading {
+  display: flex;
+  flex-direction: center;
+  justify-content: center;
+  margin-top: 5em;
+}
+
+.loading::after {
+  content: "";
+  width: 200px;
+  height: 200px;
+  border: 10px solid #dddddd;
+  border-top-color: #009579;
+  border-radius: 50%;
+  animation: loading 1s ease infinite;
+}
+
+@keyframes loading {
+  to {
+    transform: rotate(1turn);
+  }
+}

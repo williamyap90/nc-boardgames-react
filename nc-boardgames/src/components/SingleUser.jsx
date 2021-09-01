@@ -3,15 +3,21 @@ import { getSingleUser } from "../Api";
 import { useParams, Link } from "react-router-dom";
 import { Button, Icon, Divider } from "semantic-ui-react";
 
-const SingleUser = () => {
+const SingleUser = ({ isLoading, setIsLoading }) => {
   const [singleUser, setSingleUser] = useState([]);
   const { username } = useParams();
 
   useEffect(() => {
+    setIsLoading(true);
     getSingleUser(username).then((data) => {
       setSingleUser(data);
+      setIsLoading(false);
     });
   }, [username]);
+
+  if (isLoading) {
+    return <div className="loading loading--full-height"></div>;
+  }
 
   return (
     <section className="section__body section__body-user">

@@ -3,14 +3,20 @@ import { getUsers } from "../Api";
 import { Link } from "react-router-dom";
 import { Button, Icon, Divider } from "semantic-ui-react";
 
-const Users = () => {
+const Users = ({ isLoading, setIsLoading }) => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
+    setIsLoading(true);
     getUsers().then((data) => {
       setUsers(data);
+      setIsLoading(false);
     });
   }, []);
+
+  if (isLoading) {
+    return <div className="loading loading--full-height"></div>;
+  }
 
   return (
     <section className="section__body section__body-users">

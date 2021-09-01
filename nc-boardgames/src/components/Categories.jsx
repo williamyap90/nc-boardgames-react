@@ -3,12 +3,24 @@ import { getCategories } from "../Api";
 import { Link } from "react-router-dom";
 import { Divider } from "semantic-ui-react";
 
-const Categories = ({ categories, setCategories, setFilters }) => {
+const Categories = ({
+  categories,
+  setCategories,
+  setFilters,
+  isLoading,
+  setIsLoading,
+}) => {
   useEffect(() => {
+    setIsLoading(true);
     getCategories().then((data) => {
       setCategories(data);
+      setIsLoading(false);
     });
   }, [setCategories]);
+
+  if (isLoading) {
+    return <div className="loading loading--full-height"></div>;
+  }
 
   return (
     <section className="section__body section__body-categories">

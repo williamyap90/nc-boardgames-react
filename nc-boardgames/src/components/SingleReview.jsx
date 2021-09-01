@@ -12,7 +12,7 @@ import {
 import Comments from "./Comments";
 import Voter from "./Voter";
 
-const SingleReview = ({ user }) => {
+const SingleReview = ({ user, isLoading, setIsLoading }) => {
   const { review_id } = useParams();
   const [singleReview, setSingleReview] = useState({});
   const [showComments, setShowComments] = useState(false);
@@ -21,8 +21,10 @@ const SingleReview = ({ user }) => {
   const { username } = user;
 
   useEffect(() => {
+    setIsLoading(true);
     getSingleReview(review_id).then((data) => {
       setSingleReview(data);
+      setIsLoading(false);
     });
   }, [review_id, comments]);
 
@@ -41,6 +43,10 @@ const SingleReview = ({ user }) => {
     });
     setNewCommentBody("");
   };
+
+  if (isLoading) {
+    return <div className="loading loading--full-height"></div>;
+  }
 
   return (
     <section className="section__body section__body-review">

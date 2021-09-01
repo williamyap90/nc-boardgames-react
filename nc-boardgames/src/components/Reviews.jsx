@@ -12,12 +12,20 @@ const Reviews = ({
   setFilters,
   reviews,
   setReviews,
+  isLoading,
+  setIsLoading,
 }) => {
   useEffect(() => {
+    setIsLoading(true);
     getReviews(filters).then((data) => {
       setReviews(data);
+      setIsLoading(false);
     });
   }, [filters]);
+
+  if (isLoading) {
+    return <div className="loading loading--full-height"></div>;
+  }
 
   return (
     <section className="section__body section__body-reviews">
