@@ -1,5 +1,9 @@
 import { Icon } from "semantic-ui-react";
-import { patchCommentVotes, getCommentsByReviewId } from "../Api";
+import {
+  patchCommentVotes,
+  getCommentsByReviewId,
+  deleteComment,
+} from "../Api";
 import { useEffect } from "react";
 
 const Comments = ({ review_id, comments, setComments, username }) => {
@@ -23,6 +27,21 @@ const Comments = ({ review_id, comments, setComments, username }) => {
     });
     patchCommentVotes(num, comment_id).then(() => {
       alert("Thanks for your vote!");
+    });
+  };
+
+  const removeComment = (comment_id) => {
+    setComments((currentComments) => {
+      let newComments = currentComments.map((comment) => {
+        return (comment = { ...comment });
+      });
+      newComments = newComments.filter((comment) => {
+        return comment.comment_id !== comment_id;
+      });
+      return newComments;
+    });
+    deleteComment(comment_id).then(() => {
+      alert("Your comment has been deleted!");
     });
   };
 
@@ -57,7 +76,7 @@ const Comments = ({ review_id, comments, setComments, username }) => {
               <span
                 className="comments__delete"
                 onClick={() => {
-                  console.log("hello");
+                  removeComment(comment.comment_id);
                 }}
               >
                 <Icon color="grey" name="trash alternate" size="large" />

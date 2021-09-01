@@ -75,3 +75,12 @@ export const postNewComment = async (commentBody, user, id) => {
     console.log(err);
   }
 };
+
+export const deleteComment = async (comment_id) => {
+  try {
+    const res = await api.delete(`/comments/${comment_id}`);
+    return res.status;
+  } catch (err) {
+    console.log(err);
+  }
+};
