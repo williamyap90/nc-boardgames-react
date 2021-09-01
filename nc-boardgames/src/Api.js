@@ -9,14 +9,18 @@ export const getCategories = async () => {
   return data.result;
 };
 
-export const getReviews = async (filters) => {
-  const filtersArray = [];
-  for (let filter in filters) {
-    if (filters[filter]) filtersArray.push(`${filter}=${filters[filter]}`);
-  }
-  const filtersString = `?${filtersArray.join("&")}`;
+export const getReviews = async ({ category, sort_by, order, p, limit }) => {
+  const params = {
+    params: {
+      category,
+      sort_by,
+      order,
+      p,
+      limit,
+    },
+  };
 
-  const { data } = await api.get(`/reviews${filtersString}`);
+  const { data } = await api.get("/reviews", params);
   return data.result.reviews;
 };
 
