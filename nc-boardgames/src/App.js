@@ -10,6 +10,7 @@ import SingleReview from "./components/SingleReview";
 import SingleUser from "./components/SingleUser";
 
 function App() {
+  const [reviews, setReviews] = useState([]);
   const [categories, setCategories] = useState([]);
   const [filters, setFilters] = useState({
     category: null,
@@ -36,10 +37,16 @@ function App() {
               setCategories={setCategories}
               filters={filters}
               setFilters={setFilters}
+              reviews={reviews}
+              setReviews={setReviews}
             />
           </Route>
           <Route exact path="/reviews/:review_id">
-            <SingleReview user={user} />
+            <SingleReview
+              user={user}
+              reviews={reviews}
+              setReviews={setReviews}
+            />
           </Route>
           <Route exact path="/categories">
             <Categories

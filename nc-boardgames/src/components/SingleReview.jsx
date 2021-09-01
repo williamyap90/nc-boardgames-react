@@ -12,7 +12,7 @@ import {
 import Comments from "./Comments";
 import Voter from "./Voter";
 
-const SingleReview = ({ user }) => {
+const SingleReview = ({ user, reviews, setReviews }) => {
   const { review_id } = useParams();
   const [singleReview, setSingleReview] = useState({});
   const [showComments, setShowComments] = useState(false);
@@ -24,6 +24,7 @@ const SingleReview = ({ user }) => {
     });
   }, [review_id]);
 
+  console.log(singleReview);
   return (
     <section className="section__body section__body-review">
       <div className="page__divider_div"></div>
@@ -85,6 +86,7 @@ const SingleReview = ({ user }) => {
           <Voter
             review_id={singleReview.review_id}
             votes={singleReview.votes}
+            setReviewState={setSingleReview}
           />
 
           <div className="single_review__btn-container">

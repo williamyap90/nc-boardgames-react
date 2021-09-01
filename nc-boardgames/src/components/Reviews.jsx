@@ -4,10 +4,16 @@ import { changeVotes } from "../utils/utils";
 import { Link } from "react-router-dom";
 import { Divider, Icon, Button, Label } from "semantic-ui-react";
 import Filters from "./Filters";
+import Voter from "./Voter";
 
-const Reviews = ({ categories, setCategories, filters, setFilters }) => {
-  const [reviews, setReviews] = useState([]);
-
+const Reviews = ({
+  categories,
+  setCategories,
+  filters,
+  setFilters,
+  reviews,
+  setReviews,
+}) => {
   useEffect(() => {
     getReviews(filters).then((data) => {
       setReviews(data);
@@ -66,23 +72,11 @@ const Reviews = ({ categories, setCategories, filters, setFilters }) => {
                   </Button>
                 </Button>
 
-                <div
-                  className="reviews__upvote"
-                  onClick={() => {
-                    changeVotes(1, review.review_id);
-                  }}
-                >
-                  <Icon color="grey" name="caret up" size="huge" />
-                </div>
-                <p className="reviews__votes">{review.votes} Votes</p>
-                <div
-                  className="reviews__downvote"
-                  onClick={() => {
-                    changeVotes(-1, review.review_id);
-                  }}
-                >
-                  <Icon color="grey" name="caret down" size="huge" />
-                </div>
+                <Voter
+                  setReviewState={setReviews}
+                  review_id={review.review_id}
+                  votes={review.votes}
+                />
               </li>
             );
           })}
