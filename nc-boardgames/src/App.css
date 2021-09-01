@@ -1,8 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Raleway:wght@200;400;700&display=swap");
 
-.App {
-  text-align: center;
-}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -61,6 +58,7 @@ h3 {
 .header__logo {
   background-color: rgba(255, 255, 255, 0);
   padding: 2.5em 0;
+  margin-left: 1em;
   max-width: 80%;
   height: auto;
 }
@@ -83,15 +81,16 @@ h3 {
   }
   .nav__bar {
     grid-area: nav;
-    /* border: 1px solid green; */
   }
   .nav__users {
     grid-area: users;
     display: flex;
     align-self: flex-end;
     flex-direction: row;
-    /* border: 1px solid blue; */
   }
+}
+.nav__users {
+  text-align: right;
 }
 .nav__footer {
   padding: 0.2em;
@@ -221,10 +220,10 @@ nav ul li:hover {
   /* Reviews cards */
   .reviews__title {
     grid-area: title;
-    font-size: 1.15em;
+    font-size: 1.1em;
     align-self: center;
-    justify-self: center;
-    padding: 0.5em 1em;
+    justify-self: start;
+    margin-left: 0.8em;
   }
 
   .reviews__content-body {
@@ -333,9 +332,8 @@ nav ul li:hover {
     grid-area: title;
     font-size: 1.15em;
     align-self: start;
-    justify-self: center;
+    justify-self: start;
     word-wrap: break-word;
-
     max-width: 100%;
     padding-right: 1.25em;
   }
@@ -354,6 +352,12 @@ nav ul li:hover {
     padding: 0.5em;
   }
 }
+.filter__search-box {
+  padding: 0.5em;
+  border-radius: 0.5em;
+  border: 1px solid var(--box-dark);
+}
+
 .reviews__pagination {
   padding-top: 1em;
   padding-bottom: 3em;
@@ -519,7 +523,10 @@ nav ul li:hover {
 }
 
 .category__item-title {
+  display: flex;
+  flex-direction: row;
   text-transform: capitalize;
+  justify-content: center;
 }
 .category__container li p {
   padding: 0.25em;
