@@ -24,7 +24,6 @@ const SingleReview = ({ user, reviews, setReviews }) => {
     });
   }, [review_id]);
 
-  console.log(singleReview);
   return (
     <section className="section__body section__body-review">
       <div className="page__divider_div"></div>
