@@ -8,6 +8,7 @@ import Reviews from "./components/Reviews";
 import Users from "./components/Users";
 import SingleReview from "./components/SingleReview";
 import SingleUser from "./components/SingleUser";
+import NotFound from "./components/NotFound";
 
 function App() {
   const [reviews, setReviews] = useState([]);
@@ -67,6 +68,9 @@ function App() {
           </Route>
           <Route exact path="/users/:username">
             <SingleUser isLoading={isLoading} setIsLoading={setIsLoading} />
+          </Route>
+          <Route path="*">
+            <NotFound />
           </Route>
         </Switch>
       </section>

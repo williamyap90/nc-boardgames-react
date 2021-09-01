@@ -45,6 +45,12 @@ h3 {
   color: rgb(150, 150, 150);
 }
 
+.error_page {
+  text-align: center;
+  background: url("./images/cream_dust.png") repeat 0 0;
+  height: 70vh;
+  padding: 5em;
+}
 /* Header */
 .site__header-bar {
   padding: 0.5em;
