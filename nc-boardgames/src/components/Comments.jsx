@@ -23,7 +23,9 @@ const Comments = ({ review_id }) => {
       });
       return newComments;
     });
-    patchCommentVotes(num, review_id);
+    patchCommentVotes(num, comment_id).then(() => {
+      alert("Thanks for your vote!");
+    });
   };
 
   return (
