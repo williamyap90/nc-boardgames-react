@@ -577,9 +577,10 @@ nav ul li:hover {
   grid-template-areas:
     "upvote date author"
     "votes body body"
-    "downvote body body";
+    "downvote body body"
+    ". . delete";
   grid-template-columns: 1fr 3.5fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 15px;
   height: 100%;
 }
 .comments__author {
@@ -587,6 +588,12 @@ nav ul li:hover {
   font-size: 1.15em;
   font-weight: 700;
   justify-self: end;
+}
+.comments__delete {
+  grid-area: delete;
+  justify-self: end;
+  margin-right: 1em;
+  cursor: pointer;
 }
 .comments__created {
   grid-area: date;

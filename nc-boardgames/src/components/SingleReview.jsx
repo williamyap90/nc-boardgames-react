@@ -147,6 +147,7 @@ const SingleReview = ({ user, isLoading, setIsLoading }) => {
                 review_id={singleReview.review_id}
                 comments={comments}
                 setComments={setComments}
+                username={username}
               />
             ) : null}
           </div>

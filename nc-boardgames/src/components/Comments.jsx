@@ -2,7 +2,7 @@ import { Icon } from "semantic-ui-react";
 import { patchCommentVotes, getCommentsByReviewId } from "../Api";
 import { useEffect } from "react";
 
-const Comments = ({ review_id, comments, setComments }) => {
+const Comments = ({ review_id, comments, setComments, username }) => {
   useEffect(() => {
     getCommentsByReviewId(review_id).then((data) => {
       setComments(data);
@@ -52,6 +52,17 @@ const Comments = ({ review_id, comments, setComments }) => {
             >
               <Icon color="grey" name="caret down" size="large" />
             </div>
+
+            {comment.author === username ? (
+              <span
+                className="comments__delete"
+                onClick={() => {
+                  console.log("hello");
+                }}
+              >
+                <Icon color="grey" name="trash alternate" size="large" />
+              </span>
+            ) : null}
           </div>
         );
       })}
