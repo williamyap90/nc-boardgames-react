@@ -9,6 +9,7 @@ const UserProfile = ({ user, setUser }) => {
           <Button
             className="userprofile_btn"
             style={{ margin: "1em" }}
+            compact={true}
             onClick={() => {
               setUser((currUser) => {
                 const newUser = { ...currUser };
@@ -26,6 +27,7 @@ const UserProfile = ({ user, setUser }) => {
           <Button
             className="userprofile_btn"
             style={{ margin: "1em" }}
+            compact={true}
             onClick={() => {
               setUser((currUser) => {
                 const newUser = { ...currUser };
