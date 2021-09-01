@@ -12,17 +12,35 @@ import {
 import Comments from "./Comments";
 import Voter from "./Voter";
 
-const SingleReview = ({ user, reviews, setReviews }) => {
+const SingleReview = ({ user }) => {
   const { review_id } = useParams();
   const [singleReview, setSingleReview] = useState({});
   const [showComments, setShowComments] = useState(false);
   const [newCommentBody, setNewCommentBody] = useState("");
+  const [comments, setComments] = useState([]);
+  const { username } = user;
 
   useEffect(() => {
     getSingleReview(review_id).then((data) => {
       setSingleReview(data);
     });
-  }, [review_id]);
+  }, [review_id, comments]);
+
+  const updateCommentList = (newCommentBody, username, review_id) => {
+    postNewComment(newCommentBody, username, review_id).then((res) => {
+      if (res) {
+        alert("Successfully posted a new comment!");
+        setComments((currentComments) => {
+          const newComments = currentComments.map((comment) => {
+            return (comment = { ...comment });
+          });
+          newComments.unshift(res[0]);
+          return newComments;
+        });
+      }
+    });
+    setNewCommentBody("");
+  };
 
   return (
     <section className="section__body section__body-review">
@@ -53,15 +71,7 @@ const SingleReview = ({ user, reviews, setReviews }) => {
             className="single_review__textarea"
             onSubmit={(event) => {
               event.preventDefault();
-              postNewComment(
-                newCommentBody,
-                user.username,
-                singleReview.review_id
-              ).then((res) => {
-                if (res) {
-                  alert("Successfully posted a new comment!");
-                }
-              });
+              updateCommentList(newCommentBody, username, review_id);
               setNewCommentBody("");
             }}
           >
@@ -130,7 +140,11 @@ const SingleReview = ({ user, reviews, setReviews }) => {
 
           <div className="reviews__comments-container">
             {showComments ? (
-              <Comments review_id={singleReview.review_id} />
+              <Comments
+                review_id={singleReview.review_id}
+                comments={comments}
+                setComments={setComments}
+              />
             ) : null}
           </div>
         </div>
