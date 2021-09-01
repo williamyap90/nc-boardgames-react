@@ -1,10 +1,8 @@
 import { Icon } from "semantic-ui-react";
 import { patchCommentVotes, getCommentsByReviewId } from "../Api";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
-const Comments = ({ review_id }) => {
-  const [comments, setComments] = useState([]);
-
+const Comments = ({ review_id, comments, setComments }) => {
   useEffect(() => {
     getCommentsByReviewId(review_id).then((data) => {
       setComments(data);
@@ -29,7 +27,7 @@ const Comments = ({ review_id }) => {
   };
 
   return (
-    <section>
+    <>
       {comments.map((comment) => {
         return (
           <div className="comments__container" key={comment.comment_id}>
@@ -57,7 +55,7 @@ const Comments = ({ review_id }) => {
           </div>
         );
       })}
-    </section>
+    </>
   );
 };
 
