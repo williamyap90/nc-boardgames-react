@@ -2,6 +2,14 @@ import { useEffect } from "react";
 import { getCategories } from "../Api";
 
 const Filters = ({ categories, setCategories, filters, setFilters }) => {
+  const defaultFilters = {
+    category: null,
+    sort_by: null,
+    order: null,
+    p: 1,
+    limit: 10,
+  };
+
   useEffect(() => {
     getCategories().then((data) => {
       setCategories(data);
@@ -14,14 +22,6 @@ const Filters = ({ categories, setCategories, filters, setFilters }) => {
       newFilters[labelName] = event.target.value;
       return newFilters;
     });
-  };
-
-  const defaultFilters = {
-    category: null,
-    sort_by: null,
-    order: null,
-    p: 1,
-    limit: 10,
   };
 
   return (
