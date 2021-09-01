@@ -2,18 +2,10 @@ import { Icon } from "semantic-ui-react";
 import { patchCommentVotes, getCommentsByReviewId } from "../Api";
 import { useEffect } from "react";
 
-const Comments = ({
-  review_id,
-  comments,
-  setComments,
-  isLoading,
-  setIsLoading,
-}) => {
+const Comments = ({ review_id, comments, setComments }) => {
   useEffect(() => {
-    setIsLoading(true);
     getCommentsByReviewId(review_id).then((data) => {
       setComments(data);
-      setIsLoading(false);
     });
   }, []);
 
@@ -33,10 +25,6 @@ const Comments = ({
       alert("Thanks for your vote!");
     });
   };
-
-  if (isLoading) {
-    return <div className="loading loading--full-height"></div>;
-  }
 
   return (
     <>

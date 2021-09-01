@@ -21,10 +21,8 @@ const SingleReview = ({ user, isLoading, setIsLoading }) => {
   const { username } = user;
 
   useEffect(() => {
-    setIsLoading(true);
     getSingleReview(review_id).then((data) => {
       setSingleReview(data);
-      setIsLoading(false);
     });
   }, [review_id, comments]);
 
@@ -117,7 +115,6 @@ const SingleReview = ({ user, isLoading, setIsLoading }) => {
               animated
               className="reviews__btn-view"
               onClick={() => {
-                // getComments(singleReview.review_id);
                 setShowComments((currVal) => !currVal);
               }}
             >
