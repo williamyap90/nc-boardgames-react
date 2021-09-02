@@ -944,3 +944,14 @@ nav ul li:hover {
     transform: rotate(1turn);
   }
 }
+
+/* Pagination */
+.page__container {
+  display: flex;
+  padding: 1em;
+  justify-content: space-evenly;
+}
+
+.page__container > p {
+  margin-top: 1em;
+}
