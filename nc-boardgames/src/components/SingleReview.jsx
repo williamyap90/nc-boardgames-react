@@ -11,6 +11,7 @@ import {
 } from "semantic-ui-react";
 import Comments from "./Comments";
 import Voter from "./Voter";
+import NotFound from "./NotFound";
 
 const SingleReview = ({ user, isLoading, setIsLoading }) => {
   const { review_id } = useParams();
@@ -19,12 +20,20 @@ const SingleReview = ({ user, isLoading, setIsLoading }) => {
   const [newCommentBody, setNewCommentBody] = useState("");
   const [comments, setComments] = useState([]);
   const { username } = user;
+  const [hasErrored, setHasErrored] = useState(false);
 
   useEffect(() => {
-    getSingleReview(review_id).then((data) => {
-      setSingleReview(data);
-    });
+    setIsLoading(false);
+    getSingleReview(review_id)
+      .then((data) => {
+        setSingleReview(data);
+      })
+      .catch((err) => {
+        setHasErrored(true);
+      });
   }, [review_id, comments]);
+
+  if (hasErrored) return <NotFound />;
 
   const updateCommentList = (newCommentBody, username, review_id) => {
     postNewComment(newCommentBody, username, review_id).then((res) => {
