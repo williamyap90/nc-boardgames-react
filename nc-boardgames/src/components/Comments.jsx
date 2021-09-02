@@ -54,22 +54,24 @@ const Comments = ({ review_id, comments, setComments, username }) => {
             <p className="comments__author">{comment.author}</p>
             <p className="comments__created">{comment.created_at}</p>
 
-            <div
-              className="comments__upvote"
-              onClick={() => {
-                changeCommentVotes(1, comment.comment_id);
-              }}
-            >
-              <Icon color="grey" name="caret up" size="large" />
-            </div>
-            <p className="comments__votes">{comment.votes} Votes</p>
-            <div
-              className="comments__downvote"
-              onClick={() => {
-                changeCommentVotes(-1, comment.comment_id);
-              }}
-            >
-              <Icon color="grey" name="caret down" size="large" />
+            <div className="comments__vote-container">
+              <div
+                className="comments__upvote"
+                onClick={() => {
+                  changeCommentVotes(1, comment.comment_id);
+                }}
+              >
+                <Icon color="grey" name="caret up" size="large" />
+              </div>
+              <p className="comments__votes">{comment.votes} Votes</p>
+              <div
+                className="comments__downvote"
+                onClick={() => {
+                  changeCommentVotes(-1, comment.comment_id);
+                }}
+              >
+                <Icon color="grey" name="caret down" size="large" />
+              </div>
             </div>
 
             {comment.author === username ? (
