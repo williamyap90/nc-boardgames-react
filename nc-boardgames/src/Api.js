@@ -9,19 +9,20 @@ export const getCategories = async () => {
   return data.result;
 };
 
-export const getReviews = async ({ category, sort_by, order, p, limit }) => {
+export const getReviews = async (filters, page) => {
   const params = {
     params: {
-      category,
-      sort_by,
-      order,
-      p,
-      limit,
+      category: filters.category,
+      sort_by: filters.sort_by,
+      order: filters.order,
+      page: page,
+      limit: filters.limit,
     },
   };
+  console.log(params.params, "params in getreviews");
 
   const { data } = await api.get("/reviews", params);
-  return data.result.reviews;
+  return data.result;
 };
 
 export const getSingleReview = async (review_id) => {
