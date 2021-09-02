@@ -321,6 +321,9 @@ nav ul li:hover {
 }
 
 @media screen and (max-width: 500px) {
+  nav ul li {
+    margin: 0 0.7em;
+  }
   .reviews__item {
     display: grid;
     grid-template-areas:
@@ -390,6 +393,9 @@ nav ul li:hover {
   }
 }
 @media screen and (max-width: 800px) and (min-width: 500px) {
+  nav ul li {
+    margin: 0 2em;
+  }
   .reviews__item {
     display: grid;
     grid-template-areas:
