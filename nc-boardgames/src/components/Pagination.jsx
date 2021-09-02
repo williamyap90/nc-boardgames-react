@@ -1,7 +1,6 @@
 import { Button, Icon } from "semantic-ui-react";
 
 const Pagination = ({ page, setPage, pageCount }) => {
-  console.log(pageCount, "<< pageCount");
   return (
     <div className="page__container">
       <Button
