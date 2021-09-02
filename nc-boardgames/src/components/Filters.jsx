@@ -6,7 +6,7 @@ const Filters = ({ categories, setCategories, filters, setFilters }) => {
     category: null,
     sort_by: null,
     order: null,
-    p: 1,
+    page: 1,
     limit: 10,
   };
 

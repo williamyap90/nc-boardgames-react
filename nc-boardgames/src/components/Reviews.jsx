@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getReviews } from "../Api";
 import { Link } from "react-router-dom";
 import { Divider, Icon, Button, Label } from "semantic-ui-react";
 import Filters from "./Filters";
 import Voter from "./Voter";
+import Pagination from "./Pagination";
 
 const Reviews = ({
   categories,
@@ -15,13 +16,19 @@ const Reviews = ({
   isLoading,
   setIsLoading,
 }) => {
+  const [page, setPage] = useState(1);
+  const [totalReviews, setTotalReviews] = useState(0);
+  const reviewsPerPage = 10;
+  const pageCount = Math.ceil(totalReviews / reviewsPerPage);
+
   useEffect(() => {
     setIsLoading(true);
-    getReviews(filters).then((data) => {
-      setReviews(data);
+    getReviews(filters, page).then(({ reviews, total_count }) => {
+      setReviews(reviews);
+      setTotalReviews(+total_count);
       setIsLoading(false);
     });
-  }, [filters]);
+  }, [filters, page]);
 
   if (isLoading) {
     return <div className="loading loading--full-height"></div>;
@@ -89,9 +96,8 @@ const Reviews = ({
           })}
         </ul>
       </div>
-      <p className="reviews__pagination">
-        Previous - Showing 1-10 of 24 - Next
-      </p>
+
+      <Pagination page={page} setPage={setPage} pageCount={pageCount} />
     </section>
   );
 };
