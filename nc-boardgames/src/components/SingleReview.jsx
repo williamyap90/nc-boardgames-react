@@ -68,6 +68,10 @@ const SingleReview = ({ user, isLoading, setIsLoading }) => {
       <div className="single_review__container" key={singleReview.review_id}>
         <div className="single_review__item">
           <h3 className="single_review__item-title">{singleReview.title}</h3>
+          <div className="single_review__authordate">
+            <p className="single_review__author">By {singleReview.owner}</p>
+            <p className="single_review__created">{singleReview.created_at}</p>
+          </div>
           <img
             className="single_review__image"
             src={singleReview.review_img_url}
@@ -79,10 +83,6 @@ const SingleReview = ({ user, isLoading, setIsLoading }) => {
           <p className="single_review__category">{singleReview.category}</p>
           <p className="single_review__body">{singleReview.review_body}</p>
           <p className="single_review__id">ID: #{singleReview.review_id}</p>
-          <div className="single_review__authordate">
-            <p className="single_review__author">By {singleReview.owner}</p>
-            <p className="single_review__created">{singleReview.created_at}</p>
-          </div>
 
           <Form
             className="single_review__textarea"
@@ -101,8 +101,8 @@ const SingleReview = ({ user, isLoading, setIsLoading }) => {
               }}
             />
             <Button
+              id="single_review__comment-btn"
               primary
-              style={{ minHeight: 100 }}
               disabled={newCommentBody.length === 0 ? true : false}
             >
               Post comment
