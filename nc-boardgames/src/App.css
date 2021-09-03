@@ -204,7 +204,7 @@ nav ul li:hover {
       "vote img title id"
       "downvote img owner comment";
     grid-gap: 0em;
-    grid-template-columns: 1fr 1.5fr 5fr 1.5fr;
+    grid-template-columns: 1.3fr 1.5fr 5fr 1.5fr;
     grid-template-rows: 1fr 1fr 1fr;
     list-style: none;
     border: 1px solid var(--box-dark);
@@ -340,9 +340,7 @@ nav ul li:hover {
     background-color: var(--box-light);
     width: 90%;
   }
-  .reviews__image,
-  .reviews__upvote,
-  .reviews__downvote {
+  .reviews__image {
     display: none;
   }
   .reviews__title {
@@ -403,7 +401,7 @@ nav ul li:hover {
       "vote title title"
       "downvote  owner comment";
     grid-gap: 0;
-    grid-template-columns: 1fr 5fr 1.5fr;
+    grid-template-columns: 1.3fr 5fr 1.5fr;
     grid-template-rows: 1fr 1fr 1fr;
     list-style: none;
     border: 1px solid var(--box-dark);
@@ -552,14 +550,39 @@ nav ul li:hover {
     border: 1px solid var(--box-dark);
     margin: 1em;
     background-color: var(--box-light);
+    width: 90%;
   }
   .single_review__item > * {
     padding: 0 1em;
   }
+  .single_review__voter-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 1em;
+  }
+  .single_review__item > div > .reviews__upvote {
+    margin-bottom: 0.5em;
+    justify-self: center;
+    align-self: center;
+  }
+  .single_review__item > div > .reviews__votes {
+    grid-area: vote;
+
+    justify-self: center;
+    align-self: center;
+  }
+  .single_review__item > div > .reviews__downvote {
+    grid-area: downvote;
+    justify-self: center;
+    align-self: center;
+  }
   .single_review__item-title {
+    grid-area: title;
     padding-top: 1em;
   }
   .single_review__image {
+    grid-area: img;
     max-width: 100%;
     margin: 0 auto;
     height: auto;
@@ -578,18 +601,21 @@ nav ul li:hover {
     padding: 0 0.25em;
   }
   .single_review__authordate {
+    grid-area: authordate;
     margin-bottom: 1em;
   }
   .single_review__created {
     color: rgb(150, 150, 150);
   }
   .single_review__designer {
+    grid-area: designer;
     margin-top: 1em;
   }
   .single_review__category {
     font-weight: 700;
   }
   .single_review__textarea {
+    grid-area: newcomment;
     display: Flex;
     flex-direction: column;
     justify-content: center;
@@ -601,16 +627,23 @@ nav ul li:hover {
     height: 50px;
   }
   .single_review__btn-container {
+    grid-area: buttons;
     display: flex;
     justify-content: space-evenly;
+    margin-top: 1em;
+    margin-bottom: 1em;
   }
   .reviews__comments-container {
-    margin: 0;
-    padding: 0;
+    grid-area: comments;
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    margin: 0 auto;
   }
   .comments__container {
+    border-radius: var(--box-radius);
     padding: 1em;
-    margin: 1em;
+    margin: 0.5em auto;
     background-color: var(--clr-light);
     display: grid;
     grid-template-areas:
@@ -620,6 +653,23 @@ nav ul li:hover {
       "body body body"
       "votes votes delete";
     grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+  }
+  .comments__voter-container {
+    grid-area: votes;
+    display: flex;
+  }
+  .comments__voter-container > div {
+    margin: 0 1em;
+    justify-self: center;
+    align-self: center;
+  }
+  .comments__voter-container > .reviews__votes {
+    margin-top: 0.8em;
+  }
+  .comments__title {
+    align-self: center;
+    border: 1px solid red;
   }
   .comments__author {
     grid-area: author;
@@ -666,8 +716,8 @@ nav ul li:hover {
     display: grid;
     grid-template-areas:
       "upvote title category"
-      "vote title . "
-      "downvote authordate id"
+      "upvote title . "
+      "upvote authordate id"
       "img img img"
       "designer designer ."
       "body body body"
@@ -677,6 +727,28 @@ nav ul li:hover {
       "comments comments comments";
     grid-template-columns: 1fr 3.5fr 1fr;
   }
+  .single_review__voter-container {
+    grid-area: upvote;
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-self: center;
+  }
+  .single_review__item > div > .reviews__upvote {
+    margin-bottom: 0.5em;
+    justify-self: center;
+    align-self: center;
+  }
+  .single_review__item > div > .reviews__votes {
+    margin-bottom: 0.8em;
+    justify-self: center;
+    align-self: center;
+  }
+  .single_review__item > div > .reviews__downvote {
+    justify-self: center;
+    align-self: center;
+  }
+
   #single_review__comment-btn {
     min-height: 100px;
   }
@@ -729,6 +801,7 @@ nav ul li:hover {
     display: flex;
     flex-direction: column;
     min-width: 100%;
+    margin: 0 auto;
   }
   .single_review__image {
     grid-area: img;
@@ -784,14 +857,32 @@ nav ul li:hover {
     margin-top: 1em;
     display: grid;
     grid-template-areas:
-      "upvote date author"
+      "votes date author"
       "votes body body"
-      "downvote body body"
+      "votes body body"
       ". . delete";
-    grid-template-columns: 1fr 3.5fr 1fr;
+    grid-template-columns: 1fr 4fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 15px;
     height: 100%;
   }
+  .comments__voter-container {
+    grid-area: votes;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  .comments__voter-container > .reviews__upvote {
+    align-self: center;
+  }
+  .comments__voter-container > .reviews__votes {
+    align-self: center;
+    width: 100%;
+    text-align: center;
+  }
+  .comments__voter-container > .reviews__downvote {
+    align-self: center;
+  }
+
   .comments__author {
     grid-area: author;
     font-size: 1.15em;
