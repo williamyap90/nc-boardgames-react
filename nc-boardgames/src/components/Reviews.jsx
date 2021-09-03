@@ -95,12 +95,14 @@ const Reviews = ({
                   </Button>
                 </Button>
 
-                <Voter
-                  setState={setReviews}
-                  current_id={review.review_id}
-                  votes={review.votes}
-                  patchFunction={patchVotes}
-                />
+                <div className="reviews__voter-container">
+                  <Voter
+                    current_id={review.review_id}
+                    votes={review.votes}
+                    setState={setReviews}
+                    patchFunction={patchVotes}
+                  />
+                </div>
               </li>
             );
           })}
