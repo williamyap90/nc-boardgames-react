@@ -5,6 +5,7 @@ import {
   deleteComment,
 } from "../Api";
 import { useEffect } from "react";
+import Voter from "./Voter";
 
 const Comments = ({ review_id, comments, setComments, username }) => {
   useEffect(() => {
@@ -12,23 +13,6 @@ const Comments = ({ review_id, comments, setComments, username }) => {
       setComments(data);
     });
   }, []);
-
-  const changeCommentVotes = (num, comment_id) => {
-    setComments((currentComments) => {
-      const newComments = currentComments.map((comment) => {
-        return (comment = { ...comment });
-      });
-      newComments.forEach((comment) => {
-        if (comment.comment_id === comment_id) {
-          comment.votes = comment.votes + num;
-        }
-      });
-      return newComments;
-    });
-    patchCommentVotes(num, comment_id).then(() => {
-      alert("Thanks for your vote!");
-    });
-  };
 
   const removeComment = (comment_id) => {
     setComments((currentComments) => {
@@ -54,24 +38,13 @@ const Comments = ({ review_id, comments, setComments, username }) => {
             <p className="comments__author">{comment.author}</p>
             <p className="comments__created">{comment.created_at}</p>
 
-            <div className="comments__vote-container">
-              <div
-                className="comments__upvote"
-                onClick={() => {
-                  changeCommentVotes(1, comment.comment_id);
-                }}
-              >
-                <Icon color="grey" name="caret up" size="large" />
-              </div>
-              <p className="comments__votes">{comment.votes} Votes</p>
-              <div
-                className="comments__downvote"
-                onClick={() => {
-                  changeCommentVotes(-1, comment.comment_id);
-                }}
-              >
-                <Icon color="grey" name="caret down" size="large" />
-              </div>
+            <div className="comments__voter-container">
+              <Voter
+                current_id={comment.comment_id}
+                votes={comment.votes}
+                setState={setComments}
+                patchFunction={patchCommentVotes}
+              />
             </div>
 
             {comment.author === username ? (

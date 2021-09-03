@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getReviews } from "../Api";
+import { getReviews, patchVotes } from "../Api";
 import { Link } from "react-router-dom";
 import { Divider, Icon, Button, Label } from "semantic-ui-react";
 import Filters from "./Filters";
@@ -29,6 +29,13 @@ const Reviews = ({
       setIsLoading(false);
     });
   }, [filters, page]);
+
+  const convertTime = (time) => {
+    let date = new Date(time);
+    return (
+      date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
+    );
+  };
 
   if (isLoading) {
     return <div className="loading loading--full-height"></div>;
@@ -66,7 +73,9 @@ const Reviews = ({
                 <p className="reviews__category">{review.category}</p>
                 <div className="reviews__details">
                   <p className="reviews__owner">By {review.owner}</p>
-                  <p className="reviews__created">{review.created_at}</p>
+                  <p className="reviews__created">
+                    {convertTime(review.created_at)}
+                  </p>
                 </div>
                 <p className="reviews__id">ID: #{review.review_id}</p>
 
@@ -87,9 +96,10 @@ const Reviews = ({
                 </Button>
 
                 <Voter
-                  setReviewState={setReviews}
-                  review_id={review.review_id}
+                  setState={setReviews}
+                  current_id={review.review_id}
                   votes={review.votes}
+                  patchFunction={patchVotes}
                 />
               </li>
             );

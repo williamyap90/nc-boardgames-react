@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getSingleReview, postNewComment } from "../Api";
+import { getSingleReview, postNewComment, patchVotes } from "../Api";
 import { useParams, Link } from "react-router-dom";
 import {
   Button,
@@ -84,6 +84,15 @@ const SingleReview = ({ user, isLoading, setIsLoading }) => {
           <p className="single_review__body">{singleReview.review_body}</p>
           <p className="single_review__id">ID: #{singleReview.review_id}</p>
 
+          <div className="single_review__voter-container">
+            <Voter
+              current_id={singleReview.review_id}
+              votes={singleReview.votes}
+              setState={setSingleReview}
+              patchFunction={patchVotes}
+            />
+          </div>
+
           <Form
             className="single_review__textarea"
             onSubmit={(event) => {
@@ -108,12 +117,6 @@ const SingleReview = ({ user, isLoading, setIsLoading }) => {
               Post comment
             </Button>
           </Form>
-
-          <Voter
-            review_id={singleReview.review_id}
-            votes={singleReview.votes}
-            setReviewState={setSingleReview}
-          />
 
           <div className="single_review__btn-container">
             <Button animated className="reviews__btn-back">
