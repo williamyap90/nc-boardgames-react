@@ -24,6 +24,7 @@ function App() {
     username: "cooljmessy",
   });
   const [isLoading, setIsLoading] = useState(true);
+  const [votedObj, setVotedObj] = useState({});
 
   return (
     <BrowserRouter>
@@ -43,6 +44,8 @@ function App() {
               setReviews={setReviews}
               isLoading={isLoading}
               setIsLoading={setIsLoading}
+              votedObj={votedObj}
+              setVotedObj={setVotedObj}
             />
           </Route>
           <Route exact path="/reviews/:review_id">
@@ -52,6 +55,8 @@ function App() {
               setReviews={setReviews}
               isLoading={isLoading}
               setIsLoading={setIsLoading}
+              votedObj={votedObj}
+              setVotedObj={setVotedObj}
             />
           </Route>
           <Route exact path="/categories">

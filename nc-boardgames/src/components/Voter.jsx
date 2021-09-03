@@ -1,6 +1,13 @@
 import { Icon } from "semantic-ui-react";
 
-const Voter = ({ current_id, votes, setState, patchFunction }) => {
+const Voter = ({
+  current_id,
+  votes,
+  setState,
+  patchFunction,
+  votedObj,
+  setVotedObj,
+}) => {
   const changeVotes = (num, id) => {
     setState((current) => {
       if (!Array.isArray(current)) {
@@ -18,10 +25,12 @@ const Voter = ({ current_id, votes, setState, patchFunction }) => {
         if (item.hasOwnProperty("review_id")) {
           if (item.review_id === current_id) {
             item.votes += num;
+            updateVotedObj("review_id", current_id);
           }
         } else if (item.hasOwnProperty("comment_id")) {
           if (item.comment_id === current_id) {
             item.votes += num;
+            updateVotedObj("comment_id", current_id);
           }
         }
       });
@@ -32,6 +41,17 @@ const Voter = ({ current_id, votes, setState, patchFunction }) => {
     });
   };
 
+  const updateVotedObj = (typeOfId, currentId) => {
+    setVotedObj((currentObj) => {
+      const newCurrentObj = { ...currentObj };
+      newCurrentObj[`${typeOfId} ${currentId}`] = true;
+      return newCurrentObj;
+    });
+  };
+
+  console.log(current_id, "<<currentId");
+  console.log(votedObj);
+
   return (
     <>
       <Icon
@@ -39,9 +59,12 @@ const Voter = ({ current_id, votes, setState, patchFunction }) => {
         color="grey"
         name="chevron up"
         size="large"
+        disabled={
+          (current_id && votedObj.hasOwnProperty(`review_id ${current_id}`)) ||
+          (current_id && votedObj.hasOwnProperty(`comment_id ${current_id}`))
+        }
         onClick={() => {
           changeVotes(1, current_id);
-          console.log("hello");
         }}
       />
       <p className="reviews__votes">{votes} Votes</p>
@@ -50,9 +73,12 @@ const Voter = ({ current_id, votes, setState, patchFunction }) => {
         color="grey"
         name="chevron down"
         size="large"
+        disabled={
+          (current_id && votedObj.hasOwnProperty(`review_id ${current_id}`)) ||
+          (current_id && votedObj.hasOwnProperty(`comment_id ${current_id}`))
+        }
         onClick={() => {
           changeVotes(-1, current_id);
-          console.log("down");
         }}
       />
     </>

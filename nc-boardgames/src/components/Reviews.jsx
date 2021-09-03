@@ -15,6 +15,8 @@ const Reviews = ({
   setReviews,
   isLoading,
   setIsLoading,
+  votedObj,
+  setVotedObj,
 }) => {
   const [page, setPage] = useState(1);
   const [totalReviews, setTotalReviews] = useState(0);
@@ -101,6 +103,8 @@ const Reviews = ({
                     votes={review.votes}
                     setState={setReviews}
                     patchFunction={patchVotes}
+                    votedObj={votedObj}
+                    setVotedObj={setVotedObj}
                   />
                 </div>
               </li>

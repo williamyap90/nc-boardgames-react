@@ -7,7 +7,14 @@ import {
 import { useEffect } from "react";
 import Voter from "./Voter";
 
-const Comments = ({ review_id, comments, setComments, username }) => {
+const Comments = ({
+  review_id,
+  comments,
+  setComments,
+  username,
+  votedObj,
+  setVotedObj,
+}) => {
   useEffect(() => {
     getCommentsByReviewId(review_id).then((data) => {
       setComments(data);
@@ -44,6 +51,8 @@ const Comments = ({ review_id, comments, setComments, username }) => {
                 votes={comment.votes}
                 setState={setComments}
                 patchFunction={patchCommentVotes}
+                votedObj={votedObj}
+                setVotedObj={setVotedObj}
               />
             </div>
 

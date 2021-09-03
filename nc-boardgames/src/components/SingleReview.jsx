@@ -13,7 +13,13 @@ import Comments from "./Comments";
 import Voter from "./Voter";
 import NotFound from "./NotFound";
 
-const SingleReview = ({ user, isLoading, setIsLoading }) => {
+const SingleReview = ({
+  user,
+  isLoading,
+  setIsLoading,
+  votedObj,
+  setVotedObj,
+}) => {
   const { review_id } = useParams();
   const [singleReview, setSingleReview] = useState({});
   const [showComments, setShowComments] = useState(false);
@@ -90,6 +96,8 @@ const SingleReview = ({ user, isLoading, setIsLoading }) => {
               votes={singleReview.votes}
               setState={setSingleReview}
               patchFunction={patchVotes}
+              votedObj={votedObj}
+              setVotedObj={setVotedObj}
             />
           </div>
 
@@ -164,6 +172,8 @@ const SingleReview = ({ user, isLoading, setIsLoading }) => {
                 comments={comments}
                 setComments={setComments}
                 username={username}
+                votedObj={votedObj}
+                setVotedObj={setVotedObj}
               />
             ) : null}
           </div>
