@@ -34,23 +34,27 @@ const Voter = ({ current_id, votes, setState, patchFunction }) => {
 
   return (
     <>
-      <div
+      <Icon
         className="reviews__upvote"
+        color="grey"
+        name="chevron up"
+        size="large"
         onClick={() => {
           changeVotes(1, current_id);
+          console.log("hello");
         }}
-      >
-        <Icon color="grey" name="chevron up" size="large" />
-      </div>
+      />
       <p className="reviews__votes">{votes} Votes</p>
-      <div
+      <Icon
         className="reviews__downvote"
+        color="grey"
+        name="chevron down"
+        size="large"
         onClick={() => {
           changeVotes(-1, current_id);
+          console.log("down");
         }}
-      >
-        <Icon color="grey" name="chevron down" size="large" />
-      </div>
+      />
     </>
   );
 };
