@@ -200,9 +200,9 @@ nav ul li:hover {
   .reviews__item {
     display: grid;
     grid-template-areas:
-      "upvote img title category"
+      "vote img title category"
       "vote img title id"
-      "downvote img owner comment";
+      "vote img owner comment";
     grid-gap: 0em;
     grid-template-columns: 1.3fr 1.5fr 5fr 1.5fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -223,6 +223,23 @@ nav ul li:hover {
     justify-self: center;
     align-self: center;
     padding: 0.5em;
+  }
+  .reviews__voter-container {
+    grid-area: vote;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .reviews__voter-container > .reviews__upvote {
+    align-self: center;
+    margin-bottom: 1em;
+  }
+  .reviews__voter-container > .reviews__votes {
+    text-align: center;
+  }
+  .reviews__voter-container > .reviews__downvote {
+    align-self: center;
+    margin-top: 1em;
   }
 
   /* Reviews cards */
@@ -330,8 +347,9 @@ nav ul li:hover {
     display: grid;
     grid-template-areas:
       "category id"
-      " title votes"
-      " owner comment";
+      " title title"
+      " owner comment"
+      "votes votes";
     grid-gap: 0;
     grid-template-columns: 3fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -341,6 +359,15 @@ nav ul li:hover {
     margin: 0.5em;
     background-color: var(--box-light);
     width: 90%;
+  }
+  .reviews__voter-container {
+    grid-area: votes;
+    display: flex;
+    justify-content: center;
+    margin: 1em 0;
+  }
+  .reviews__voter-container > * {
+    margin: 0 2em;
   }
   .reviews__image {
     display: none;
@@ -360,9 +387,9 @@ nav ul li:hover {
   .reviews__id {
     grid-area: id;
   }
-  .reviews__votes {
+  /* .reviews__votes {
     grid-area: votes;
-  }
+  } */
   .filters__container {
     display: flex;
     flex-direction: column;
@@ -399,9 +426,9 @@ nav ul li:hover {
   .reviews__item {
     display: grid;
     grid-template-areas:
-      "upvote category id"
+      "vote category id"
       "vote title title"
-      "downvote  owner comment";
+      "vote  owner comment";
     grid-gap: 0;
     grid-template-columns: 1.3fr 5fr 1.5fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -455,6 +482,23 @@ nav ul li:hover {
     margin-top: 1em;
     margin-bottom: 1em;
     border-bottom: 1px solid var(--box-dark);
+  }
+  .reviews__voter-container {
+    grid-area: vote;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .reviews__voter-container > .reviews__upvote {
+    align-self: center;
+    margin-bottom: 1em;
+  }
+  .reviews__voter-container > .reviews__votes {
+    text-align: center;
+  }
+  .reviews__voter-container > .reviews__downvote {
+    align-self: center;
+    margin-top: 1em;
   }
 }
 .filter__search-box {
@@ -746,6 +790,7 @@ nav ul li:hover {
     margin-bottom: 0.8em;
     justify-self: center;
     align-self: center;
+    text-align: center;
   }
   .single_review__item > div > .reviews__downvote {
     justify-self: center;
@@ -863,7 +908,7 @@ nav ul li:hover {
       "votes date author"
       "votes body body"
       "votes body body"
-      ". . delete";
+      "votes . delete";
     grid-template-columns: 1fr 4fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 15px;
     height: 100%;
