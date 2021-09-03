@@ -19,7 +19,6 @@ export const getReviews = async (filters, page) => {
       limit: filters.limit,
     },
   };
-  console.log(params.params, "params in getreviews");
 
   const { data } = await api.get("/reviews", params);
   return data.result;
