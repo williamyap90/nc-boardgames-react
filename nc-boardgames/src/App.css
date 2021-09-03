@@ -314,6 +314,8 @@ nav ul li:hover {
   justify-self: center;
   align-self: center;
   font-size: 0.9em;
+  width: 100%;
+  text-align: center;
 }
 .reviews__container li p {
   padding: 0.25em;
@@ -558,8 +560,9 @@ nav ul li:hover {
   .single_review__voter-container {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     margin-bottom: 1em;
+    margin: 0 3em;
   }
   .single_review__item > div > .reviews__upvote {
     margin-bottom: 0.5em;
