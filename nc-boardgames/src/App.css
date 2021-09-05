@@ -1058,8 +1058,9 @@ nav ul li:hover {
   align-items: center;
   justify-content: center;
 }
-
 .user__item {
+  display: flex;
+  flex-direction: column;
   list-style: none;
   border-radius: var(--box-radius);
   border: 1px solid var(--box-dark);
@@ -1069,6 +1070,8 @@ nav ul li:hover {
   width: 400px;
   height: 400px;
   font-size: 0.9rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .user__item:hover {
@@ -1077,13 +1080,14 @@ nav ul li:hover {
 }
 
 .user__image {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
+  margin-bottom: 0.5em;
 }
 
 .user__item > p {
-  padding: 0.25em;
+  padding: 0.5em;
   text-align: center;
   margin: 0;
 }
