@@ -3,7 +3,7 @@ import { getSingleUser } from "../Api";
 import { useParams, Link } from "react-router-dom";
 import { Button, Icon, Divider } from "semantic-ui-react";
 
-const SingleUser = ({ isLoading, setIsLoading }) => {
+const SingleUser = ({ isLoading, setIsLoading, user, setUser }) => {
   const [singleUser, setSingleUser] = useState([]);
   const { username } = useParams();
 
@@ -14,6 +14,20 @@ const SingleUser = ({ isLoading, setIsLoading }) => {
       setIsLoading(false);
     });
   }, [username]);
+
+  const loginUser = (singleUsername) => {
+    if (user.username) {
+      alert(
+        `You are already logged in as '${user.username}'. Please logout first.`
+      );
+    } else {
+      setUser((currUser) => {
+        const newCurrUser = { ...currUser };
+        newCurrUser.username = singleUsername;
+        return newCurrUser;
+      });
+    }
+  };
 
   if (isLoading) {
     return <div className="loading loading--full-height"></div>;
@@ -44,7 +58,11 @@ const SingleUser = ({ isLoading, setIsLoading }) => {
                 </Button.Content>
               </Button>
             </Link>
-            <Button className="users__button" style={{ margin: 10 }}>
+            <Button
+              className="users__button"
+              style={{ margin: 10 }}
+              onClick={() => loginUser(singleUser.username)}
+            >
               Log In
             </Button>
           </div>

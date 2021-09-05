@@ -68,7 +68,12 @@ function App() {
             <Users isLoading={isLoading} setIsLoading={setIsLoading} />
           </Route>
           <Route exact path="/users/:username">
-            <SingleUser isLoading={isLoading} setIsLoading={setIsLoading} />
+            <SingleUser
+              isLoading={isLoading}
+              setIsLoading={setIsLoading}
+              user={user}
+              setUser={setUser}
+            />
           </Route>
           <Route path="*">
             <NotFound />
