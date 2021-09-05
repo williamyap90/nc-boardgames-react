@@ -27,6 +27,7 @@ const Reviews = ({
     setIsLoading(true);
     getReviews(filters, page).then(({ reviews, total_count }) => {
       setReviews(reviews);
+      window.scrollTo(0, 0);
       setTotalReviews(+total_count);
       setIsLoading(false);
     });
