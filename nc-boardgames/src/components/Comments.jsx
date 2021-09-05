@@ -4,7 +4,7 @@ import {
   getCommentsByReviewId,
   deleteComment,
 } from "../Api";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Voter from "./Voter";
 import { fixDate } from "../utils/utils";
 
@@ -16,6 +16,8 @@ const Comments = ({
   votedObj,
   setVotedObj,
 }) => {
+  const [commentsFilterObj, setCommentsFilterObj] = useState({});
+
   useEffect(() => {
     getCommentsByReviewId(review_id).then((data) => {
       setComments(data);
@@ -37,17 +39,40 @@ const Comments = ({
     });
   };
 
+  const updateCommentsFilterObj = (event, labelName) => {
+    setCommentsFilterObj((currObj) => {
+      const newObj = { ...currObj };
+      newObj[labelName] = event.target.value;
+      console.log(newObj);
+      return newObj;
+    });
+  };
+
   return (
     <>
       <div className="comments__sort-container">
         <label htmlFor="comments__sort_by">Sort by:</label>
-        <select name="comments__sort_by" id="comments__sort_by">
+        <select
+          name="comments__sort_by"
+          id="comments__sort_by"
+          value={commentsFilterObj.sort_by || ""}
+          onChange={(event) => {
+            updateCommentsFilterObj(event, "sort_by");
+          }}
+        >
           <option value="">Select sort by</option>
           <option value="date_created">Date created</option>
           <option value="votes">Votes</option>
         </select>
         <label htmlFor="comments__order">Order: </label>
-        <select name="comments__order" id="comments__order">
+        <select
+          name="comments__order"
+          id="comments__order"
+          value={commentsFilterObj.order || ""}
+          onChange={(event) => {
+            updateCommentsFilterObj(event, "order");
+          }}
+        >
           <option value="">Select order</option>
           <option value="asc">Ascending</option>
           <option value="desc">Descending</option>
