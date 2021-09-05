@@ -14,13 +14,8 @@ import Voter from "./Voter";
 import NotFound from "./NotFound";
 import { fixDate } from "../utils/utils";
 
-const SingleReview = ({
-  user,
-  isLoading,
-  setIsLoading,
-  votedObj,
-  setVotedObj,
-}) => {
+const SingleReview = ({ user, votedObj, setVotedObj }) => {
+  const [isLoading, setIsLoading] = useState(true);
   const { review_id } = useParams();
   const [singleReview, setSingleReview] = useState({});
   const [showComments, setShowComments] = useState(false);

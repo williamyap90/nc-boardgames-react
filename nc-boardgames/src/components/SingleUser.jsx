@@ -3,7 +3,8 @@ import { getSingleUser } from "../Api";
 import { useParams, Link } from "react-router-dom";
 import { Button, Icon, Divider } from "semantic-ui-react";
 
-const SingleUser = ({ isLoading, setIsLoading, user, setUser }) => {
+const SingleUser = ({ user, setUser }) => {
+  const [isLoading, setIsLoading] = useState(true);
   const [singleUser, setSingleUser] = useState([]);
   const { username } = useParams();
 

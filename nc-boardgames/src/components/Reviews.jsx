@@ -14,11 +14,10 @@ const Reviews = ({
   setFilters,
   reviews,
   setReviews,
-  isLoading,
-  setIsLoading,
   votedObj,
   setVotedObj,
 }) => {
+  const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [totalReviews, setTotalReviews] = useState(0);
   const reviewsPerPage = 10;

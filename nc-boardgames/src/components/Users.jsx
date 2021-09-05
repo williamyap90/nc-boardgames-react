@@ -3,7 +3,8 @@ import { getUsers } from "../Api";
 import { Link } from "react-router-dom";
 import { Button, Icon, Divider } from "semantic-ui-react";
 
-const Users = ({ isLoading, setIsLoading }) => {
+const Users = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [users, setUsers] = useState([]);
 
   useEffect(() => {

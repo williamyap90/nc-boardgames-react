@@ -1,15 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getCategories } from "../Api";
 import { Link } from "react-router-dom";
 import { Divider } from "semantic-ui-react";
 
-const Categories = ({
-  categories,
-  setCategories,
-  setFilters,
-  isLoading,
-  setIsLoading,
-}) => {
+const Categories = ({ categories, setCategories, setFilters }) => {
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     setIsLoading(true);
     getCategories().then((data) => {

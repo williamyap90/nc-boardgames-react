@@ -22,7 +22,7 @@ function App() {
   const [user, setUser] = useState({
     username: "cooljmessy",
   });
-  const [isLoading, setIsLoading] = useState(true);
+
   const [votedObj, setVotedObj] = useState({});
 
   return (
@@ -38,8 +38,6 @@ function App() {
               setFilters={setFilters}
               reviews={reviews}
               setReviews={setReviews}
-              isLoading={isLoading}
-              setIsLoading={setIsLoading}
               votedObj={votedObj}
               setVotedObj={setVotedObj}
             />
@@ -49,8 +47,6 @@ function App() {
               user={user}
               reviews={reviews}
               setReviews={setReviews}
-              isLoading={isLoading}
-              setIsLoading={setIsLoading}
               votedObj={votedObj}
               setVotedObj={setVotedObj}
             />
@@ -60,20 +56,13 @@ function App() {
               categories={categories}
               setCategories={setCategories}
               setFilters={setFilters}
-              isLoading={isLoading}
-              setIsLoading={setIsLoading}
             />
           </Route>
           <Route exact path="/users">
-            <Users isLoading={isLoading} setIsLoading={setIsLoading} />
+            <Users />
           </Route>
           <Route exact path="/users/:username">
-            <SingleUser
-              isLoading={isLoading}
-              setIsLoading={setIsLoading}
-              user={user}
-              setUser={setUser}
-            />
+            <SingleUser user={user} setUser={setUser} />
           </Route>
           <Route path="*">
             <NotFound />
