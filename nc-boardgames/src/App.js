@@ -2,7 +2,6 @@ import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { useState } from "react";
 import Nav from "./components/Nav";
-import Home from "./components/Home";
 import Categories from "./components/Categories";
 import Reviews from "./components/Reviews";
 import Users from "./components/Users";
