@@ -387,9 +387,6 @@ nav ul li:hover {
   .reviews__id {
     grid-area: id;
   }
-  /* .reviews__votes {
-    grid-area: votes;
-  } */
   .filters__container {
     display: flex;
     flex-direction: column;
@@ -417,6 +414,21 @@ nav ul li:hover {
     margin-top: 1em;
     margin-bottom: 1em;
     border-bottom: 1px solid var(--box-dark);
+  }
+  .reviews__voter-container > .reviews__upvote {
+    margin-left: 1.5em;
+    align-self: center;
+    justify-self: center;
+  }
+  .reviews__voter-container > .reviews__downvote {
+    margin-right: 1em;
+    align-self: center;
+    justify-self: center;
+  }
+  .comments__voter-container > .reviews__upvote,
+  .reviews__downvote {
+    align-self: center;
+    justify-self: center;
   }
 }
 @media screen and (max-width: 800px) and (min-width: 500px) {
@@ -499,6 +511,11 @@ nav ul li:hover {
   .reviews__voter-container > .reviews__downvote {
     align-self: center;
     margin-top: 1em;
+  }
+  .comments__voter-container > .reviews__upvote,
+  .reviews__downvote {
+    align-self: center;
+    justify-self: center;
   }
 }
 .filter__search-box {
@@ -716,7 +733,6 @@ nav ul li:hover {
   }
   .comments__title {
     align-self: center;
-    border: 1px solid red;
   }
   .comments__author {
     grid-area: author;
