@@ -5,6 +5,7 @@ import { Divider, Icon, Button, Label } from "semantic-ui-react";
 import Filters from "./Filters";
 import Voter from "./Voter";
 import Pagination from "./Pagination";
+import { fixDate } from "../utils/utils";
 
 const Reviews = ({
   categories,
@@ -32,13 +33,6 @@ const Reviews = ({
       setIsLoading(false);
     });
   }, [filters, page]);
-
-  const convertTime = (time) => {
-    let date = new Date(time);
-    return (
-      date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
-    );
-  };
 
   if (isLoading) {
     return <div className="loading loading--full-height"></div>;
@@ -77,7 +71,7 @@ const Reviews = ({
                 <div className="reviews__details">
                   <p className="reviews__owner">By {review.owner}</p>
                   <p className="reviews__created">
-                    {convertTime(review.created_at)}
+                    {fixDate(review.created_at)}
                   </p>
                 </div>
                 <p className="reviews__id">ID: #{review.review_id}</p>

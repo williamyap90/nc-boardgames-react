@@ -6,6 +6,7 @@ import {
 } from "../Api";
 import { useEffect } from "react";
 import Voter from "./Voter";
+import { fixDate } from "../utils/utils";
 
 const Comments = ({
   review_id,
@@ -43,7 +44,7 @@ const Comments = ({
           <div className="comments__container" key={comment.comment_id}>
             <p className="comments__body">{comment.body}</p>
             <p className="comments__author">{comment.author}</p>
-            <p className="comments__created">{comment.created_at}</p>
+            <p className="comments__created">{fixDate(comment.created_at)}</p>
 
             <div className="comments__voter-container">
               <Voter

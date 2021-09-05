@@ -12,6 +12,7 @@ import {
 import Comments from "./Comments";
 import Voter from "./Voter";
 import NotFound from "./NotFound";
+import { fixDate } from "../utils/utils";
 
 const SingleReview = ({
   user,
@@ -76,7 +77,9 @@ const SingleReview = ({
           <h3 className="single_review__item-title">{singleReview.title}</h3>
           <div className="single_review__authordate">
             <p className="single_review__author">By {singleReview.owner}</p>
-            <p className="single_review__created">{singleReview.created_at}</p>
+            <p className="single_review__created">
+              {fixDate(singleReview.created_at)}
+            </p>
           </div>
           <img
             className="single_review__image"
