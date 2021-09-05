@@ -256,7 +256,22 @@ nav ul li:hover {
     flex-direction: column;
     width: 100%;
   }
-
+  .reviews__details {
+    grid-area: owner;
+    align-self: start;
+    margin-top: -1em;
+    font-size: 0.95em;
+  }
+  .reviews__category {
+    text-align: right;
+    width: 100%;
+    font-size: 0.95em;
+  }
+  .reviews__id {
+    text-align: right;
+    width: 100%;
+    font-size: 0.95em;
+  }
   /* Filters */
   .filters__container {
     display: flex;
@@ -386,6 +401,9 @@ nav ul li:hover {
   }
   .reviews__id {
     grid-area: id;
+    text-align: right;
+    width: 100%;
+    font-size: 0.95em;
   }
   .filters__container {
     display: flex;
@@ -466,6 +484,11 @@ nav ul li:hover {
   .reviews__category {
     justify-self: start;
     align-self: center;
+  }
+  .reviews__id {
+    text-align: right;
+    width: 100%;
+    font-size: 0.95em;
   }
   .filters__container {
     display: flex;
