@@ -62,6 +62,7 @@ const Filters = ({ categories, setCategories, filters, setFilters }) => {
         <select
           name="sort_by"
           id="sort_by"
+          value={filters.sort_by || ""}
           onChange={(event) => {
             updateFiltersObj(event, "sort_by");
           }}
@@ -77,6 +78,7 @@ const Filters = ({ categories, setCategories, filters, setFilters }) => {
         <select
           name="order"
           id="order"
+          value={filters.order || ""}
           onChange={(event) => {
             updateFiltersObj(event, "order");
           }}
@@ -90,11 +92,12 @@ const Filters = ({ categories, setCategories, filters, setFilters }) => {
         <select
           name="limit"
           id="limit"
+          value={filters.limit || 10}
           onChange={(event) => {
             updateFiltersObj(event, "limit");
           }}
         >
-          <option value="">#</option>
+          <option value="10">#</option>
           <option value="5">5</option>
           <option value="10">10</option>
           <option value="15">15</option>
