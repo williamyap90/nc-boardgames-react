@@ -20,7 +20,7 @@ const Comments = ({
     getCommentsByReviewId(review_id).then((data) => {
       setComments(data);
     });
-  }, []);
+  }, [review_id, setComments]);
 
   const removeComment = (comment_id) => {
     setComments((currentComments) => {
