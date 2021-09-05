@@ -39,6 +39,20 @@ const Comments = ({
 
   return (
     <>
+      <div className="comments__sort-container">
+        <label htmlFor="comments__sort_by">Sort by:</label>
+        <select name="comments__sort_by" id="comments__sort_by">
+          <option value="">Select sort by</option>
+          <option value="date_created">Date created</option>
+          <option value="votes">Votes</option>
+        </select>
+        <label htmlFor="comments__order">Order: </label>
+        <select name="comments__order" id="comments__order">
+          <option value="">Select order</option>
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
+        </select>
+      </div>
       {comments.map((comment) => {
         return (
           <div className="comments__container" key={comment.comment_id}>

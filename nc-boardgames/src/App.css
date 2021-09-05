@@ -303,6 +303,13 @@ nav ul li:hover {
     margin-bottom: 1em;
     border-bottom: 1px solid var(--box-dark);
   }
+  .comments__sort-container {
+    display: flex;
+    justify-content: center;
+  }
+  .comments__sort-container > * {
+    margin: 1em 1em;
+  }
 }
 .reviews__details {
   grid-area: owner;
@@ -759,6 +766,14 @@ nav ul li:hover {
   }
   .comments__voter-container > .reviews__votes {
     margin-top: 0.8em;
+  }
+  .comments__sort-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+  }
+  .comments__sort-container > label {
+    margin: 0.5em 0;
   }
   .comments__title {
     align-self: center;
