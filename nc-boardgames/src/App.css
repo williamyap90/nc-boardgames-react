@@ -550,6 +550,12 @@ nav ul li:hover {
   padding-top: 1em;
   padding-bottom: 3em;
 }
+.users__btn-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .reviews__button,
 .users__button {
   padding: 1em;

@@ -35,14 +35,19 @@ const SingleUser = ({ isLoading, setIsLoading }) => {
           />
           <p>Username: {singleUser.username}</p>
           <p>Name: {singleUser.name}</p>
-          <Link to="/users">
-            <Button animated className="users__button">
-              <Button.Content visible>Go back</Button.Content>
-              <Button.Content hidden>
-                <Icon name="arrow left" />
-              </Button.Content>
+          <div className="users__btn-container">
+            <Link to="/users">
+              <Button animated className="users__button" style={{ margin: 10 }}>
+                <Button.Content visible>Go back</Button.Content>
+                <Button.Content hidden>
+                  <Icon name="arrow left" />
+                </Button.Content>
+              </Button>
+            </Link>
+            <Button className="users__button" style={{ margin: 10 }}>
+              Log In
             </Button>
-          </Link>
+          </div>
         </li>
       </ul>
     </section>
