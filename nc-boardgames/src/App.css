@@ -1104,6 +1104,7 @@ nav ul li:hover {
 .page__container {
   display: flex;
   padding: 1em;
+  margin-bottom: 1em;
   justify-content: space-evenly;
 }
 
