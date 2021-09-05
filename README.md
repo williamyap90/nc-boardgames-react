@@ -30,7 +30,9 @@ Back End:
 
 ### Functionality
 
-For demonstration purposes the default user signed into the application is 'cooljmessy'. Should you wish to view any page as an anonymous user, select the Logout navigation item.
+The default user signed into the application is 'cooljmessy'. Should you wish to view any page as an anonymous user, select the Logout navigation item.
+
+In the users page you can log in as another user which will allow posting & deleting as the chosen user.
 
 Northcoders Board Games has game reviews which are divided into categories.
 
