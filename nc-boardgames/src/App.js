@@ -31,10 +31,7 @@ function App() {
       <section className="App">
         <Nav setFilters={setFilters} user={user} setUser={setUser} />
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/reviews">
+          <Route exact path={["/", "/reviews"]}>
             <Reviews
               categories={categories}
               setCategories={setCategories}
