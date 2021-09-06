@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getSingleUser } from "../Api";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 import { Button, Icon, Divider } from "semantic-ui-react";
 
 const SingleUser = ({ user, setUser }) => {
@@ -16,6 +16,11 @@ const SingleUser = ({ user, setUser }) => {
     });
   }, [username]);
 
+  const history = useHistory();
+  const goHome = () => {
+    history.push("/");
+  };
+
   const loginUser = (singleUsername) => {
     if (user.username) {
       alert(
@@ -27,6 +32,8 @@ const SingleUser = ({ user, setUser }) => {
         newCurrUser.username = singleUsername;
         return newCurrUser;
       });
+      alert(`Successfully logged in as '${singleUsername}'!`);
+      goHome();
     }
   };
 
