@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { getSingleReview, postNewComment, patchVotes } from "../Api";
+import {
+  getSingleReview,
+  postNewComment,
+  patchVotes,
+  patchReview,
+} from "../Api";
 import { useParams, Link } from "react-router-dom";
 import {
   Button,
@@ -23,6 +28,11 @@ const SingleReview = ({ user, votedObj, setVotedObj }) => {
   const [comments, setComments] = useState([]);
   const { username } = user;
   const [hasErrored, setHasErrored] = useState(false);
+  const [editingReview, setEditingReview] = useState({
+    isEditing: false,
+    idToEdit: null,
+  });
+  const [newEditReviewBody, setNewEditReviewBody] = useState("");
 
   useEffect(() => {
     setIsLoading(false);
@@ -57,6 +67,46 @@ const SingleReview = ({ user, votedObj, setVotedObj }) => {
     setNewCommentBody("");
   };
 
+  const editReview = (review_id) => {
+    setEditingReview((currEditingReview) => {
+      const newEditingReview = { ...currEditingReview };
+      newEditingReview.idToEdit = review_id;
+      newEditingReview.isEditing = true;
+      return newEditingReview;
+    });
+  };
+  const confirmEditReview = (review_id) => {
+    patchReview(newEditReviewBody, review_id).then((data) => {
+      setEditingReview((currEditingReview) => {
+        const newEditingReview = { ...currEditingReview };
+        newEditingReview.idToEdit = null;
+        newEditingReview.isEditing = false;
+        return newEditingReview;
+      });
+      setComments((currentReview) => {
+        const newReview = currentReview.map((review) => {
+          return (review = { ...review });
+        });
+        newReview.forEach((review) => {
+          if (review.review_id === review_id) {
+            review.body = data.body;
+          }
+        });
+        return newReview;
+      });
+      alert("Successfully edited your review.");
+    });
+  };
+
+  const cancelEditReview = (review_id) => {
+    setEditingReview((currEditingReview) => {
+      const newEditingReview = { ...currEditingReview };
+      newEditingReview.idToEdit = review_id;
+      newEditingReview.isEditing = false;
+      return newEditingReview;
+    });
+  };
+
   if (isLoading) {
     return <div className="loading loading--full-height"></div>;
   }
@@ -85,8 +135,67 @@ const SingleReview = ({ user, votedObj, setVotedObj }) => {
             Designer: {singleReview.designer}
           </p>
           <p className="single_review__category">{singleReview.category}</p>
-          <p className="single_review__body">{singleReview.review_body}</p>
           <p className="single_review__id">ID: #{singleReview.review_id}</p>
+
+          {editingReview.isEditing &&
+          editingReview.idToEdit === singleReview.review_id ? (
+            <Form
+              className="single_review-textarea"
+              onSubmit={(event) => {
+                event.preventDefault();
+                editReview(singleReview.review_id);
+              }}
+            >
+              <TextArea
+                value={newEditReviewBody || singleReview.review_body}
+                onChange={(event) => {
+                  setNewEditReviewBody(event.target.value);
+                }}
+              />
+              <div className="single_review-btn-container">
+                <Button
+                  icon="check"
+                  compact={true}
+                  color="green"
+                  onClick={() => {
+                    confirmEditReview(singleReview.review_id);
+                  }}
+                />
+
+                <Button
+                  icon="close"
+                  compact={true}
+                  color="red"
+                  onClick={() => {
+                    cancelEditReview(singleReview.review_id);
+                  }}
+                />
+              </div>
+            </Form>
+          ) : (
+            <p className="single_review__body">{singleReview.review_body}</p>
+          )}
+
+          {singleReview.owner === username ? (
+            <div className="single_review__editdel-container">
+              <span
+                className="single_review__edit"
+                onClick={() => {
+                  editReview(singleReview.review_id);
+                }}
+              >
+                <Icon color="grey" name="edit" size="large" />
+              </span>
+              <span
+                className="single_review__delete"
+                onClick={() => {
+                  // removeReview(comment.comment_id);
+                }}
+              >
+                <Icon color="grey" name="trash alternate" size="large" />
+              </span>
+            </div>
+          ) : null}
 
           <div className="single_review__voter-container">
             <Voter

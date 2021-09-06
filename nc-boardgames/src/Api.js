@@ -94,3 +94,13 @@ export const patchComment = async (commentBody, id) => {
     console.log(err);
   }
 };
+
+export const patchReview = async (reviewBody, id) => {
+  const patchItem = { review_body: reviewBody };
+  try {
+    const res = await api.patch(`/reviews/${id}`, patchItem);
+    return res.data.review[0];
+  } catch (err) {
+    console.log(err);
+  }
+};
