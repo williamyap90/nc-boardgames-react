@@ -16,7 +16,11 @@ const Comments = ({
   votedObj,
   setVotedObj,
 }) => {
-  const [commentsFilterObj, setCommentsFilterObj] = useState({});
+  // const [commentsFilterObj, setCommentsFilterObj] = useState({});
+  const [editComment, setEditComment] = useState({
+    isEditing: false,
+    idToEdit: null,
+  });
 
   useEffect(() => {
     getCommentsByReviewId(review_id).then((data) => {
@@ -39,45 +43,17 @@ const Comments = ({
     });
   };
 
-  const updateCommentsFilterObj = (event, labelName) => {
-    setCommentsFilterObj((currObj) => {
-      const newObj = { ...currObj };
-      newObj[labelName] = event.target.value;
-      console.log(newObj);
-      return newObj;
-    });
-  };
+  // const updateCommentsFilterObj = (event, labelName) => {
+  //   setCommentsFilterObj((currObj) => {
+  //     const newObj = { ...currObj };
+  //     newObj[labelName] = event.target.value;
+  //     console.log(newObj);
+  //     return newObj;
+  //   });
+  // };
 
   return (
     <>
-      <div className="comments__sort-container">
-        <label htmlFor="comments__sort_by">Sort by:</label>
-        <select
-          name="comments__sort_by"
-          id="comments__sort_by"
-          value={commentsFilterObj.sort_by || ""}
-          onChange={(event) => {
-            updateCommentsFilterObj(event, "sort_by");
-          }}
-        >
-          <option value="">Select sort by</option>
-          <option value="date_created">Date created</option>
-          <option value="votes">Votes</option>
-        </select>
-        <label htmlFor="comments__order">Order: </label>
-        <select
-          name="comments__order"
-          id="comments__order"
-          value={commentsFilterObj.order || ""}
-          onChange={(event) => {
-            updateCommentsFilterObj(event, "order");
-          }}
-        >
-          <option value="">Select order</option>
-          <option value="asc">Ascending</option>
-          <option value="desc">Descending</option>
-        </select>
-      </div>
       {comments.map((comment) => {
         return (
           <div className="comments__container" key={comment.comment_id}>
@@ -97,14 +73,24 @@ const Comments = ({
             </div>
 
             {comment.author === username ? (
-              <span
-                className="comments__delete"
-                onClick={() => {
-                  removeComment(comment.comment_id);
-                }}
-              >
-                <Icon color="grey" name="trash alternate" size="large" />
-              </span>
+              <div className="comments__editdel-container">
+                <span
+                  className="comments__edit"
+                  onClick={() => {
+                    console.log("edit");
+                  }}
+                >
+                  <Icon color="grey" name="edit" size="large" />
+                </span>
+                <span
+                  className="comments__delete"
+                  onClick={() => {
+                    removeComment(comment.comment_id);
+                  }}
+                >
+                  <Icon color="grey" name="trash alternate" size="large" />
+                </span>
+              </div>
             ) : null}
           </div>
         );
