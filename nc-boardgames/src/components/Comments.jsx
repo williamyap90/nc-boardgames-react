@@ -1,8 +1,9 @@
-import { Icon } from "semantic-ui-react";
+import { Icon, TextArea, Form, Button } from "semantic-ui-react";
 import {
   patchCommentVotes,
   getCommentsByReviewId,
   deleteComment,
+  patchComment,
 } from "../Api";
 import { useEffect, useState } from "react";
 import Voter from "./Voter";
@@ -16,11 +17,11 @@ const Comments = ({
   votedObj,
   setVotedObj,
 }) => {
-  // const [commentsFilterObj, setCommentsFilterObj] = useState({});
-  const [editComment, setEditComment] = useState({
+  const [editingComment, setEditingComment] = useState({
     isEditing: false,
     idToEdit: null,
   });
+  const [newEditCommentBody, setNewEditCommentBody] = useState("");
 
   useEffect(() => {
     getCommentsByReviewId(review_id).then((data) => {
@@ -43,21 +44,91 @@ const Comments = ({
     });
   };
 
-  // const updateCommentsFilterObj = (event, labelName) => {
-  //   setCommentsFilterObj((currObj) => {
-  //     const newObj = { ...currObj };
-  //     newObj[labelName] = event.target.value;
-  //     console.log(newObj);
-  //     return newObj;
-  //   });
-  // };
+  const editComment = (comment_id) => {
+    setEditingComment((currEditingComment) => {
+      const newEditingComment = { ...currEditingComment };
+      newEditingComment.idToEdit = comment_id;
+      newEditingComment.isEditing = true;
+      return newEditingComment;
+    });
+  };
+
+  const confirmEditComment = (comment_id) => {
+    patchComment(newEditCommentBody, comment_id).then((data) => {
+      setEditingComment((currEditingComment) => {
+        const newEditingComment = { ...currEditingComment };
+        newEditingComment.idToEdit = null;
+        newEditingComment.isEditing = false;
+        return newEditingComment;
+      });
+      setComments((currentComments) => {
+        const newComments = currentComments.map((comment) => {
+          return (comment = { ...comment });
+        });
+        newComments.forEach((comment) => {
+          if (comment.comment_id === comment_id) {
+            comment.body = data.body;
+          }
+        });
+        return newComments;
+      });
+      alert("Successfully edited your comment.");
+    });
+  };
+
+  const cancelEditComment = (comment_id) => {
+    setEditingComment((currEditingComment) => {
+      const newEditingComment = { ...currEditingComment };
+      newEditingComment.idToEdit = comment_id;
+      newEditingComment.isEditing = false;
+      return newEditingComment;
+    });
+  };
 
   return (
     <>
       {comments.map((comment) => {
         return (
           <div className="comments__container" key={comment.comment_id}>
-            <p className="comments__body">{comment.body}</p>
+            {editingComment.isEditing &&
+            editingComment.idToEdit === comment.comment_id ? (
+              <Form
+                className="comments__edit-textarea"
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  editComment(comment.comment_id);
+                }}
+              >
+                <TextArea
+                  value={newEditCommentBody || comment.body}
+                  onChange={(event) => {
+                    setNewEditCommentBody(event.target.value);
+                  }}
+                />
+                <div className="comments__edit-btn-container">
+                  <Button
+                    icon="check"
+                    compact={true}
+                    color="green"
+                    onClick={() => {
+                      confirmEditComment(comment.comment_id);
+                    }}
+                  />
+
+                  <Button
+                    icon="close"
+                    compact={true}
+                    color="red"
+                    onClick={() => {
+                      cancelEditComment(comment.comment_id);
+                    }}
+                  />
+                </div>
+              </Form>
+            ) : (
+              <p className="comments__body">{comment.body}</p>
+            )}
+
             <p className="comments__author">{comment.author}</p>
             <p className="comments__created">{fixDate(comment.created_at)}</p>
 
@@ -77,7 +148,7 @@ const Comments = ({
                 <span
                   className="comments__edit"
                   onClick={() => {
-                    console.log("edit");
+                    editComment(comment.comment_id);
                   }}
                 >
                   <Icon color="grey" name="edit" size="large" />
