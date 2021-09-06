@@ -784,9 +784,10 @@ nav ul li:hover {
     font-weight: 700;
     justify-self: end;
   }
-  .comments__delete {
+  .comments__editdel-container {
     grid-area: delete;
     cursor: pointer;
+    justify-self: end;
   }
   .comments__created {
     grid-area: date;
@@ -800,9 +801,6 @@ nav ul li:hover {
   .comments__vote-container {
     grid-area: votes;
     display: Flex;
-  }
-  .comments__delete {
-    justify-self: end;
   }
 }
 
@@ -997,10 +995,10 @@ nav ul li:hover {
     font-weight: 700;
     justify-self: end;
   }
-  .comments__delete {
+  .comments__editdel-container {
     grid-area: delete;
     justify-self: end;
-    margin-right: 1em;
+    margin-right: 2em;
     cursor: pointer;
   }
   .comments__created {
