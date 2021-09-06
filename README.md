@@ -49,7 +49,7 @@ Users can view individual reviews and can rate them by up or down voting.
 
 Users can also view the comments belonging to a review.
 
-Users can vote on comments, post a new comment and can delete their own comments.
+Users can vote on comments, post a new comment and can edit/delete their own comments.
 
 ## Running the project locally
 
