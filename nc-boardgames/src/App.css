@@ -802,6 +802,16 @@ nav ul li:hover {
     grid-area: votes;
     display: Flex;
   }
+  .comments__edit-textarea {
+    grid-area: body;
+    margin-bottom: 1em;
+    width: 100%;
+  }
+  .comments__edit-btn-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.5em;
+  }
 }
 
 @media screen and (min-width: 620px) {
@@ -953,7 +963,6 @@ nav ul li:hover {
     margin-left: 2em;
     padding: 1em;
   }
-
   /* Comments */
   .comments__container {
     background-color: var(--clr-light);
@@ -1024,6 +1033,18 @@ nav ul li:hover {
   .comments__downvote {
     grid-area: downvote;
     place-self: center;
+  }
+  .comments__edit-textarea {
+    grid-area: body;
+    margin-left: 2em;
+    margin-top: -1.25em;
+    margin-bottom: 1em;
+    width: 90%;
+  }
+  .comments__edit-btn-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.5em;
   }
 }
 /* Categories */
