@@ -84,3 +84,13 @@ export const deleteComment = async (comment_id) => {
     console.log(err);
   }
 };
+
+export const patchComment = async (commentBody, id) => {
+  const patchItem = { body: commentBody };
+  try {
+    const res = await api.patch(`/comments/${id}`, patchItem);
+    return res.data.comment[0];
+  } catch (err) {
+    console.log(err);
+  }
+};
