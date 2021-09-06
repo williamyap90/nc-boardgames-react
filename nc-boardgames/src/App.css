@@ -740,6 +740,16 @@ nav ul li:hover {
     min-width: 100%;
     margin: 0 auto;
   }
+  .single_review__editdel-container {
+    grid-area: body;
+    text-align: right;
+    margin-right: 0.25em;
+    margin-bottom: 1em;
+  }
+  .single_review-btn-container {
+    text-align: right;
+    margin: 0.75em -0.25em;
+  }
   .comments__container {
     border-radius: var(--box-radius);
     padding: 1em;
@@ -836,11 +846,25 @@ nav ul li:hover {
       "img img img"
       "designer designer ."
       "body body body"
+      ". . edit"
       "newcomment newcomment newcomment"
       "buttons buttons buttons"
-      ". sortby ."
       "comments comments comments";
     grid-template-columns: 1fr 3.5fr 1fr;
+  }
+  .single_review__editdel-container {
+    grid-area: edit;
+    justify-self: end;
+    margin-right: 2em;
+    margin-bottom: 1em;
+  }
+  .single_review-textarea {
+    grid-area: body;
+    margin: 1em 2em;
+  }
+  .single_review-btn-container {
+    text-align: right;
+    margin: 0.75em 1em;
   }
   .single_review__voter-container {
     grid-area: upvote;
