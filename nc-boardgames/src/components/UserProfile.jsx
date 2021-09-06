@@ -16,6 +16,7 @@ const UserProfile = ({ user, setUser }) => {
                 newUser.username = null;
                 return newUser;
               });
+              alert("Successfully logged out!");
             }}
           >
             Logout
